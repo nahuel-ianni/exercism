@@ -1,3 +1,3 @@
 # Exercism solutions  
 
-nothing else to see
+package manager pip (pip install --user pytest)
