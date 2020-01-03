@@ -2,9 +2,15 @@ users/**
 .DS_Store
 [Tt]humbs.db
 Desktop.ini
-__pycache__/
+__pycache__
 *.orig
 .exercism/
 .solution.json
 .vscode/
+
+# Region
+__pycache__/
+
+
+# PyTest files
 .pytest_cache/
