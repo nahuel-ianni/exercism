@@ -1,15 +1,7 @@
-users/**
-.DS_Store
-[Tt]humbs.db
-Desktop.ini
-*.orig
-.exercism/
-.solution.json
-.vscode/
-
-# Python / DLL files
+# Python plugins
+.pytest_cache/
 __pycache__/
 
 
-# PyTest files
-.pytest_cache/
+# CLI
+.exercism/
