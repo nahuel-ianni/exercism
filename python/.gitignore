@@ -2,13 +2,12 @@ users/**
 .DS_Store
 [Tt]humbs.db
 Desktop.ini
-__pycache__
 *.orig
 .exercism/
 .solution.json
 .vscode/
 
-# Region
+# Python / DLL files
 __pycache__/
 
 
