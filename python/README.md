@@ -36,8 +36,8 @@ When your code hits one of the `breakpoint()` statements, you can interact with 
 - `q` quit the debugger/execution
 - `locals()` shows all local variables in the environment
 - `vars(object)` shows all relevant info on the inspected object
-- `exit()` (or CTRL + D) sets and interrupt
-- CTRL + C sends a cancelation command to the console 
+- `exit()` (or *CTRL + D*) sets and interrupt
+- *CTRL + C* sends a cancelation command to the console 
 
-### Helpful resources
+## Helpful resources
 - [The Python standard library](https://docs.python.org/3/library/index.html)
