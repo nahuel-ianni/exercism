@@ -1,7 +1,7 @@
 def convert(number):
     value = get_raindrop_sound(number)
 
-    return value if value is not "" else str(number)
+    return value if value else str(number)
 
 
 def get_raindrop_sound(number):
