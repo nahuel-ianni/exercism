@@ -7,7 +7,4 @@ def personal_best(scores):
 
 
 def personal_top_three(scores):
-    temp_scores = scores.copy()
-    temp_scores.sort(reverse=True)
-
-    return temp_scores[0:3]
+    return sorted(scores, reverse=True)[0:3]
