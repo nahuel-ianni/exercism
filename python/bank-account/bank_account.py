@@ -1,6 +1,11 @@
+import threading
+
+
 class BankAccount:
     def __init__(self):
         self._reset()
+
+        self.lock = threading.Lock()
 
 
     def get_balance(self):
@@ -17,20 +22,22 @@ class BankAccount:
 
 
     def deposit(self, amount):
-        self._guard_closed_account()
-        self._guard_negative_amount(amount)
+        with self.lock:
+            self._guard_closed_account()
+            self._guard_negative_amount(amount)
 
-        self.balance += amount
+            self.balance += amount
         
 
     def withdraw(self, amount):
-        self._guard_closed_account()
-        self._guard_negative_amount(amount)
+        with self.lock:
+            self._guard_closed_account()
+            self._guard_negative_amount(amount)
 
-        if self.balance < amount:
-            raise ValueError("Unsupported operation: Insufficient funds")
+            if self.balance < amount:
+                raise ValueError("Unsupported operation: Insufficient funds")
 
-        self.balance -= amount
+            self.balance -= amount
 
 
     def close(self):
