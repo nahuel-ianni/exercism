@@ -39,5 +39,12 @@ When your code hits one of the `breakpoint()` statements, you can interact with 
 - `exit()` (or *CTRL + D*) sets and interrupt
 - *CTRL + C* sends a cancelation command to the console 
 
+---
+
 ## Helpful resources
 - [The Python standard library](https://docs.python.org/3/library/index.html)
+- [List comprehension](https://realpython.com/list-comprehension-python/)
+
+  - `new_list = [expression for member in iterable]`
+  - `new_list = [expression for member in iterable (if conditional)]`
+  - `new_list = [expression (if conditional) for member in iterable]`
