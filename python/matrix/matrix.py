@@ -1,11 +1,6 @@
 class Matrix:
     def __init__(self, matrix_string):
-        self.matrix = []
-
-        for substring in matrix_string.splitlines():
-            converted_line = list(map(int, substring.split()))
-
-            self.matrix.append(converted_line)
+        self.matrix = [list(map(int, substring.split())) for substring in matrix_string.splitlines()]
 
 
     def row(self, index):
@@ -13,9 +8,5 @@ class Matrix:
 
 
     def column(self, index):
-        column = []
-
-        for row in self.matrix:
-            column.append(row[index - 1])
+        return [row[index -1 ] for row in self.matrix]
         
-        return column
