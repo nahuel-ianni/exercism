@@ -16,7 +16,7 @@ class Robot:
         while self.name in Robot.namesTaken or not self.name:
             self.name = self.getRandomName()
 
-        Robot.namesTaken.discard(formerName)
+        Robot.namesTaken.discard(formerName)        # Discard() doesn't throw an exception if the item is not found, remove() does
         Robot.namesTaken.add(self.name)
 
 
