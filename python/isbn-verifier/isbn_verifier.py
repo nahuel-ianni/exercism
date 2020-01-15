@@ -1,27 +1,17 @@
+import re as regex
+
 def is_valid(isbn):
-    result = False    
-    isbn = _parse_ISBN(isbn)
+    pattern = "^([0-9]-*)([0-9]{3}-*)([0-9]{5}-*)([0-9]|X)$"
+    formula = "(n0 * 10 + n1 * 9 + n2 * 8 + n3 * 7 + n4 * 6 + n5 * 5 + n6 * 4 + n7 * 3 + n8 * 2 + n9 * 1) % 11 == 0"
+    result = False
 
-    if len(isbn) == 10:
-        operation_check = (isbn[0] * 10 + isbn[1] * 9 + isbn[2] * 8 + isbn[3] * 7 + isbn[4] * 6 + isbn[5] * 5 + isbn[6] * 4 + isbn[7] * 3 + isbn[8] * 2 + isbn[9] * 1)
-        result = operation_check % 11 == 0
+    if regex.findall(pattern, isbn):
+        isbn = isbn.replace("-", "")
 
+        for index in range(0, len(isbn)):
+            formula = formula.replace(f"n{index}", isbn[index])
+
+        formula = formula.replace("X", "10")
+        result = eval(formula)
+        
     return result
-
-
-def _parse_ISBN(isbn):
-    if not isbn:
-        return list()
-
-    try:
-        isbn = list(isbn.replace("-", ""))
-
-        if isbn[-1] == "X":
-            isbn[-1] = 10
-
-        result = list(map(int, isbn))
-
-    except ValueError:
-        result = list()
-
-    return result#list(map(int, isbn))
