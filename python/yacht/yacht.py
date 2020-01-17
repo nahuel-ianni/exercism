@@ -51,17 +51,13 @@ def score(dice, category):
 
 
 def Numbers(values, score_modifier):
-    return score_modifier * sum(i == score_modifier for i in values)
+    return values.count(score_modifier) * score_modifier
 
 
 def Full_House(dice):
-    value = 0
-    counted = Counter(dice)
+    values = set(dice)
 
-    if len(counted) == 2 and max(counted.values()) == 3 and min(counted.values()) == 2:
-        value = sum(dice)
-
-    return value
+    return sum(dice) if len(values) == 2 and dice.count(values.pop()) in {2, 3} else 0
 
 
 def Four_of_a_Kind(dice):
