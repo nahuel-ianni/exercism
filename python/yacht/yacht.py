@@ -15,39 +15,22 @@ You can learn more here: https://en.wikipedia.org/wiki/Enumerated_type
 from collections import Counter
 
 
-# Score categories.
-# Change the values as you see fit.
-YACHT = 1
-ONES = 2
-TWOS = 3
-THREES = 4
-FOURS = 5
-FIVES = 6
-SIXES = 7
-FULL_HOUSE = 8
-FOUR_OF_A_KIND = 9
-LITTLE_STRAIGHT = 10
-BIG_STRAIGHT = 11
-CHOICE = 12
+YACHT = lambda dice: 50 if len(set(dice)) == 1 else 0
+ONES = lambda dice: Numbers(dice, 1)
+TWOS = lambda dice: Numbers(dice, 2)
+THREES = lambda dice: Numbers(dice, 3)
+FOURS = lambda dice: Numbers(dice, 4)
+FIVES = lambda dice: Numbers(dice, 5)
+SIXES = lambda dice: Numbers(dice, 6)
+FULL_HOUSE = lambda dice: Full_House(dice)
+FOUR_OF_A_KIND = lambda dice: Four_of_a_Kind(dice)
+LITTLE_STRAIGHT = lambda dice: Straight(dice, 1, 6)
+BIG_STRAIGHT = lambda dice: Straight(dice, 2, 7)
+CHOICE = lambda dice: sum(dice)
 
 
 def score(dice, category):
-    categories = {
-        YACHT: lambda dice: 50 if len(set(dice)) == 1 else 0,
-        ONES: lambda dice: Numbers(dice, 1),
-        TWOS: lambda dice: Numbers(dice, 2),
-        THREES: lambda dice: Numbers(dice, 3),
-        FOURS: lambda dice: Numbers(dice, 4),
-        FIVES: lambda dice: Numbers(dice, 5),
-        SIXES: lambda dice: Numbers(dice, 6),
-        FULL_HOUSE: Full_House,
-        FOUR_OF_A_KIND: Four_of_a_Kind,
-        LITTLE_STRAIGHT: lambda dice: Straight(dice, 1, 6),
-        BIG_STRAIGHT: lambda dice: Straight(dice, 2, 7),
-        CHOICE: lambda dice: sum(dice)
-    }.get(category)
-
-    return categories(dice)
+    return category(dice)
 
 
 def Numbers(values, score_modifier):
