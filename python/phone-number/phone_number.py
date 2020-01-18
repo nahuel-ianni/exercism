@@ -1,27 +1,27 @@
-import re as regex
-
-
 class PhoneNumber:
     def __init__(self, number):
-        self.number = "".join([n for n in number if n.isdecimal()])
-        self._guard_length(self.number)
-        self._guard_format(self.number)
+        digits = [char for char in number if char.isdecimal()]
 
-        self.number = self.number if len(self.number) == 10 else self.number[1:]
+        self._guard_number(digits)
+
+        if len(digits) == 11:
+            digits = digits[1:]
+
+        self.number = "".join(digits)
         self.area_code = self.number[:3]
+        self.exchange_code = self.number[3:6]
+        self.subscriber_number = self.number[6:]
+
+        if self.area_code[0] in ['0', '1'] or self.exchange_code[0] in ['0', '1']:
+            raise ValueError("Unsupported operation: Area code and exchange code values must range from 2 to 9.")
 
 
     def pretty(self):
-        return f"({self.area_code}) {self.number[3:6]}-{self.number[6:]}"
+        return f"({self.area_code}) {self.exchange_code}-{self.subscriber_number}"
 
-
-    def _guard_length(self, number):
-        if len(number) not in {10, 11} or (len(number) == 11 and number[0] != "1"):
-            raise ValueError("Unsupported operation: Phone number length.")
     
+    def _guard_number(self, digits):
+        length = len(digits)
 
-    def _guard_format(self, number):
-        pattern = "1?\\W*([2-9][0-8][0-9])\\W*([2-9][0-9]{2})\\W*([0-9]{4})(\\se?x?t?(\\d*))?"
-
-        if not regex.findall(pattern, number):
+        if length not in [10, 11] or (length == 11 and digits[0] != "1"):
             raise ValueError("Unsupported operation: Phone number length.")
