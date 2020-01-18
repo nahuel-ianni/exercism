@@ -1,3 +1,6 @@
+from textwrap import wrap
+from itertools import takewhile
+
 amino_acid = {
     "AUG": "Methionine",
     "UUU": "Phenylalanine",
@@ -13,16 +16,13 @@ amino_acid = {
     "UGU": "Cysteine",
     "UGC": "Cysteine",
     "UGG": "Tryptophan",
-    "UAA": "STOP",
-    "UAG": "STOP",
-    "UGA": "STOP",
+    "UAA": None,
+    "UAG": None,
+    "UGA": None,
 }
 
 def proteins(strand):
-    if len(strand) % 3 != 0:
-        raise ValueError("Unsupported operation: The strand info doesn't allow creating proper length codons (3 char long).")
-
-    codons = [strand[i:i+3] for i in range(0, len(strand), 3)]
+    codons = wrap(strand, 3)                                    # [strand[i:i+3] for i in range(0, len(strand), 3)]
     amino_acids = [amino_acid.get(c) for c in codons]
 
-    return amino_acids if "STOP" not in amino_acids else amino_acids[:amino_acids.index("STOP")]
+    return list(takewhile(lambda x: x, amino_acids))            # amino_acids if "STOP" not in amino_acids else amino_acids[:amino_acids.index("STOP")]
