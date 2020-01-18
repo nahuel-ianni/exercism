@@ -48,3 +48,4 @@ When your code hits one of the `breakpoint()` statements, you can interact with 
   - `new_list = [expression for member in iterable]`
   - `new_list = [expression for member in iterable (if conditional)]`
   - `new_list = [expression (if conditional) for member in iterable]`
+- [Equivalent Linq methods in Python](https://www.markheath.net/post/python-equivalents-of-linq-methods)
