@@ -4,9 +4,27 @@ class Matrix:
 
 
     def row(self, index):
-        return self.matrix[index - 1]
+        """Requests a copy of the values contained on the selected row
+        
+        Arguments:
+            index {int} -- The row number
+        
+        Returns:
+            list -- A copy of the values for the selected row in the matrix
+        """
+
+        return self.matrix[index - 1].copy()
 
 
     def column(self, index):
+        """Requests a copy of the values contained on the selected column
+        
+        Arguments:
+            index {int} -- The column number
+        
+        Returns:
+            list -- A copy of the values for the selected column in the matrix
+        """
+
         return [row[index -1] for row in self.matrix]
         
