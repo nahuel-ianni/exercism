@@ -8,7 +8,6 @@ With this premise, a good, beginner friendly, starting point for those who don't
 ## Installing Python
 If Python isn't already available on your system, follow the instructions found at the official [Python site](https://www.python.org/) to install it on your computer.
 
-
 ## Test management
 Exercism recommends installing [pytest](https://pypi.org/project/pytest/) and [pytest-cache](https://pypi.org/project/pytest-cache/). Pytest is a testing tool that will give you more flexibility over running your unit tests.
 
