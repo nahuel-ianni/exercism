@@ -42,9 +42,11 @@ When your code hits one of the `breakpoint()` statements, you can interact with 
 
 ## Helpful resources
 - [The Python standard library](https://docs.python.org/3/library/index.html)
+- [Virtual environments](https://docs.python.org/3/library/venv.html)
+- [Equivalent Linq methods in Python](https://www.markheath.net/post/python-equivalents-of-linq-methods)
 - [List comprehension](https://realpython.com/list-comprehension-python/)
 
   - `new_list = [expression for member in iterable]`
   - `new_list = [expression for member in iterable (if conditional)]`
   - `new_list = [expression (if conditional) for member in iterable]`
-- [Equivalent Linq methods in Python](https://www.markheath.net/post/python-equivalents-of-linq-methods)
+  
