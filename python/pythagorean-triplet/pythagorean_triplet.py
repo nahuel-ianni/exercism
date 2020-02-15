@@ -2,7 +2,6 @@ def triplets_with_sum(number):
     return [t for t in triplets_in_range(1, number) if sum(t) == number]
 
 
-
 def triplets_in_range(start, end):
     triplets = []
 
