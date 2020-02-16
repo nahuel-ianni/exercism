@@ -5,8 +5,8 @@ def triplets_with_sum(number):
 def triplets_in_range(start, end):
     triplets = []
 
-    for n in range(start, end - 3):
-        for m in range (n + 1, end - 2):
+    for n in range(start, end // 2):
+        for m in range (n + 1, end // 2):
             triplet = [n, m, end - n - m]
 
             if is_triplet(triplet):
