@@ -1,19 +1,13 @@
 def convert(number):
-    value = get_raindrop_sound(number)
-
-    return value if value else str(number)
-
-
-def get_raindrop_sound(number):
-    returnValue = ""
+    sound = ""
 
     if number % 3 == 0:
-        returnValue += "Pling"
+        sound += "Pling"
 
     if number % 5 == 0:
-        returnValue += "Plang"
+        sound += "Plang"
 
     if number % 7 == 0:
-        returnValue += "Plong"
+        sound += "Plong"
 
-    return returnValue
+    return sound or str(number)
