@@ -1,24 +1,15 @@
 from datetime import date
-from calendar import Calendar
+from calendar import Calendar, day_name
 from itertools import zip_longest
 
 
 def meetup(year, month, week, day_of_week):
-    weekdays = {
-        "Monday": 0,
-        "Tuesday": 1,
-        "Wednesday": 2,
-        "Thursday": 3,
-        "Friday": 4,
-        "Saturday": 5,
-        "Sunday": 6,
-    }
-
+    weekday = list(day_name).index(day_of_week)
     month_weeks = get_month(year, month)
-    week_number = get_week_number(week, month_weeks, weekdays.get(day_of_week))
+    week_number = get_week_number(week, month_weeks, weekday)
 
     try:
-        day = next(day[0] for day in month_weeks[week_number] if day and day[1] == weekdays.get(day_of_week))
+        day = next(day[0] for day in month_weeks[week_number] if day and day[1] == weekday)
 
         return date(year, month, day)
     
@@ -35,22 +26,15 @@ def get_month(year, month):
 
 
 def get_week_number(week, weeks, day_of_week):
-    if week.isdigit():
-        return int(week) - 1
-
-    elif week == "teenth":
+    if week == "teenth":
         for days in weeks:
             if any(day[1] == day_of_week for day in days if day[0] in range(13, 20)):
                 return weeks.index(days)
-        
-        raise MeetupDayException("Week number not found.")
 
     elif week == "last":
         for days in reversed(weeks):
             if any(day[1] == day_of_week for day in days if day):
                 return weeks.index(days)
-        
-        raise MeetupDayException("Week number not found.")
 
     else:
         return int(week[:-2]) - 1
