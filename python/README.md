@@ -44,6 +44,7 @@ When your code hits one of the `breakpoint()` statements, you can interact with 
 - [The Python standard library](https://docs.python.org/3/library/index.html)
 - [Virtual environments](https://docs.python.org/3/library/venv.html)
 - [Equivalent Linq methods in Python](https://www.markheath.net/post/python-equivalents-of-linq-methods)
+- [Configuration file options and examples](https://martin-thoma.com/configuration-files-in-python/)
 - [List comprehension](https://realpython.com/list-comprehension-python/)
 
   - `new_list = [expression for member in iterable]`
