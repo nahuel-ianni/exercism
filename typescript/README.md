@@ -13,11 +13,11 @@ Alternatively, Exercism recommends installing [Yarn package manager](https://yar
 - Executing the console command `$ yarn install`
 
 ## Running the tests
-Yarn can easily execute all tests in a file by executing the `yarn test` command from the test file's directory where the `package.json` file resides.
+Yarn can easily execute all tests in a file by executing the `$ yarn test` command from the test file's directory where the `package.json` file resides.
 
-If you want to execute all tests on a particular file, the command accepts a path as a parameter: `yarn test <filename>.test.ts`.
+If you want to execute all tests on a particular file, the command accepts a path as a parameter: `$ yarn test <filename>.test.ts`.
 
 ---
 
 ## Helpful resources
-*Nothing to show yet*
+- *Yarn* comes with a helpful command to review and potentially fix coding style issues by executing the following command *`$ yarn lint`*
