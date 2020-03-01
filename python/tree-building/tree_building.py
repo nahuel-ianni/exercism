@@ -32,8 +32,7 @@ def BuildTree(records):
 
     for record in records:
         if not tree_root:
-            tree_root = Node(0)
-
+            tree_root = Node(record.record_id)
         else:
             tree_root.add_node(record)
 
