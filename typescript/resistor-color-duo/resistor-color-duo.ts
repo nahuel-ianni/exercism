@@ -28,6 +28,6 @@ export class ResistorColor {
     if (value1 != null && value2 != null)
       return 10 * value1 + value2;
     
-    throw new Error("At least two colors need to be present");
+    throw new Error("Not all requested colors were found");
   }
 }
