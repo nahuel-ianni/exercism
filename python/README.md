@@ -46,6 +46,7 @@ When your code hits one of the `breakpoint()` statements, you can interact with 
 
 ## Helpful resources
 - [The Python standard library](https://docs.python.org/3/library/index.html)
+- [Python tutorials and helpful information](https://realpython.com/)
 - [Virtual environments](https://docs.python.org/3/library/venv.html)
 - [Equivalent Linq methods in Python](https://www.markheath.net/post/python-equivalents-of-linq-methods)
 - [Configuration file options and examples](https://martin-thoma.com/configuration-files-in-python/)
