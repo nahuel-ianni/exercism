@@ -1,0 +1,26 @@
+# Visual Studio cache/options directory
+.vs/
+bower_components/
+node_modules/
+
+# Exclude tsc generated files
+js/*.map
+js/ts.js
+
+# CLI
+.exercism
+
+# Optional eslint cache
+.eslintignore
+.eslintrc
+
+# Config files
+jest.config.js
+tsconfig.json
+
+# Yarn
+yarn.lock
+
+# Yarn dependencies
+package.json
+package-lock.json
