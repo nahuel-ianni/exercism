@@ -1,0 +1,16 @@
+# Dependency directories
+node_modules
+
+# Optional eslint
+.eslintcache
+.eslintrc
+
+# Babel
+babel.config.js
+
+# CLI
+.exercism
+
+# npm dependencies
+package.json
+package-lock.json
