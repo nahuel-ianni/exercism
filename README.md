@@ -8,15 +8,18 @@ This repository contains my solutions to the exercises found on [exercism.io](ht
 
 ## Tracks in progress
 - Python
-
-
-## Tracks I'm interested in
-- C#
 - Javascript
 - Typescript
 
 
-## Tracks I have a mild interest in
-- C++
-- x86-64 Assembly
+## Tracks I'm interested in
+- C#
 - F#
+- C++
+
+
+## Tracks I have a mild interest in
+- x86-64 Assembly
+- Ruby
+- Go
+- PHP
