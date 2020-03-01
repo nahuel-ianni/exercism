@@ -22,5 +22,4 @@ tsconfig.json
 yarn.lock
 
 # Yarn dependencies
-package.json
 package-lock.json

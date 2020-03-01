@@ -12,5 +12,4 @@ babel.config.js
 .exercism
 
 # npm dependencies
-package.json
 package-lock.json
