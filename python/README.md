@@ -7,7 +7,7 @@
 >
 >For its own nature, exercism assumes that you already have a grasp of the language syntax before starting doing exercises. At least at a point where you can write simple functions in Python. From there on, you can continue your learning as you will advance in the exercism track and gradually explore new constructs and concepts.  
 >
->With this premise, a good, beginner friendly, starting point for those who don't have any experience in other languages might be the Python course on [Sololearn.com](https://www.sololearn.com/). It will help you get an understanding of the Python syntax with which you will be able to start solving exercises here on exercism.
+>With this premise, a good, beginner friendly, starting point for those who don't have any experience in other languages might be the Python course on [SoloLearn.com](https://www.sololearn.com/). It will help you get an understanding of the Python syntax with which you will be able to start solving exercises here on exercism.
 
 ## Installing Python
 If Python isn't already available on your system, follow the instructions found at the official [Python site](https://www.python.org/) to install it on your computer.
@@ -40,7 +40,7 @@ When your code hits one of the `breakpoint()` statements, you can interact with 
 - `locals()` shows all local variables in the environment
 - `vars(object)` shows all relevant info on the inspected object
 - `exit()` (or *CTRL + D*) sets and interrupt
-- *CTRL + C* sends a cancelation command to the console 
+- *CTRL + C* sends a cancellation command to the console 
 
 ---
 
