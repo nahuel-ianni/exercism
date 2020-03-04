@@ -1,5 +1,5 @@
 def primes(limit):
     numbers = set(range(2, limit + 1))
-    composite_numbers = { composite for n in numbers for composite in range(n * 2, limit + 1, n) }
+    multiples = { multiple for n in numbers for multiple in range(n * 2, limit + 1, n) }
     
-    return sorted(numbers - composite_numbers)
+    return sorted(numbers - multiples)
