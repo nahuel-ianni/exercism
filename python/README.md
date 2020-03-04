@@ -1,9 +1,9 @@
 # Python
->Python is, as Wikipedia goes, a powerful general-purpose high-level programming language. It basically means that it can be used to write a wide variety of different kinds of software, from videogames to HTTP servers to command-line tools.
+>Python is, as Wikipedia goes, a powerful general-purpose high-level programming language. It basically means that it can be used to write a wide variety of different kinds of software, from video games to HTTP servers to command-line tools.
 >
->One of the main characteristics that differentiates Python from other programming languages is its strong emphasis on readability and code cleaness. In fact, differently from other languages like JavaScript or C++, in Python code indentation has a syntactical meaning and you are forced to chose and adhere to a writing style (e.g. don't mix tabs and spaces for identation; don't use two spaces where you should use four etc.). Yes, forced: the Python interpreter will raise SyntaxErrors if it recognize wrong indentation.  
+>One of the main characteristics that differentiates Python from other programming languages is its strong emphasis on readability and code cleanliness. In fact, differently from other languages like JavaScript or C++, in Python code indentation has a syntactical meaning and you are forced to chose and adhere to a writing style (e.g. don't mix tabs and spaces for indentation; don't use two spaces where you should use four etc.). Yes, forced: the Python interpreter will raise SyntaxErrors if it recognize wrong indentation.  
 >
->This might look like a limit at the beginning but, as you will advance in your learning path, you'll realize that enforcing this behaviour will make your code slim and more readable by default.  
+>This might look like a limit at the beginning but, as you will advance in your learning path, you'll realize that enforcing this behavior will make your code slim and more readable by default.  
 >
 >For its own nature, exercism assumes that you already have a grasp of the language syntax before starting doing exercises. At least at a point where you can write simple functions in Python. From there on, you can continue your learning as you will advance in the exercism track and gradually explore new constructs and concepts.  
 >
