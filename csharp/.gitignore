@@ -1,0 +1,10 @@
+# Compiled folders
+obj/
+bin/
+
+# VS Code folders
+.vs/
+.vscode/
+
+# CLI
+.exercism/
