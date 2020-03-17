@@ -1,5 +1,5 @@
 # Exercism
-This repository contains my solutions to the exercises found on [exercism.io](https://exercism.io/) tracks.
+This repository contains [my solutions](https://exercism.io/profiles/nahuel-ianni) to the exercises found on [exercism.io](https://exercism.io/) tracks.
 
 > Exercism aims to provide opportunity for people of all backgrounds by helping them develop their programming skills through practice and mentorship. We provide thousands of exercises spread across over 50 language tracks, and offer both automated and human mentoring. 
 > 
@@ -16,17 +16,17 @@ Once installed, the CLI needs to be configured by running the following command 
 `exercism configure --workspace="<WORKING_DIRECTORY>"`*
 
 ## Tracks in progress
-- Python
+- C#
 - Javascript
+- Python
 - Typescript
 
 ## Tracks I'm interested in
-- C#
 - C++
 
 ## Tracks I have a mild interest in
-- x86-64 Assembly
-- Ruby
+- F#
 - Go
 - PHP
-- F#
+- Ruby
+- x86-64 Assembly
