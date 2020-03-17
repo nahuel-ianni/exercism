@@ -1,4 +1,4 @@
-# Exercism
+# Exercism.io exercises
 This repository contains [my solutions](https://exercism.io/profiles/nahuel-ianni) to the exercises found on [exercism.io](https://exercism.io/) tracks.
 
 > Exercism aims to provide opportunity for people of all backgrounds by helping them develop their programming skills through practice and mentorship. We provide thousands of exercises spread across over 50 language tracks, and offer both automated and human mentoring. 
