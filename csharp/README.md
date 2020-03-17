@@ -9,7 +9,7 @@ Alternatively, I recommend installing [Visual Studio Code](https://code.visualst
 - Installing the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
 ## Running the tests
-The DotNet framework can easily execute all tests in a file by executing the `$ dotnet test` command from the test file's directory where the test file resides.
+The .NetCore framework can easily execute all tests in a file by executing the `$ dotnet test` command from the test file's directory where the test file resides.
 
 If you want to execute all tests on a particular file, the command accepts a path as a parameter: `$ dotnet test <filename>Test.cs`.
 
