@@ -6,17 +6,18 @@ def recite(start, take=1):
             lyrics += [
                 "No more bottles of beer on the wall, no more bottles of beer.",
                 f"Go to the store and buy some more, 99 bottles of beer on the wall."]
-            
+
             break
-        
+
         lyrics += [
             f"{bottle_num(start)} {bottle_txt(start)} of beer on the wall, {bottle_num(start)} {bottle_txt(start)} of beer.",
             f"Take {bottle_qty(start - 1)} down and pass it around, {bottle_num(start - 1)} {bottle_txt(start - 1)} of beer on the wall."]
-        
+
         take -= 1
         start -= 1
 
-        if take > 0: lyrics.append("")
+        if take > 0:
+            lyrics.append("")
 
     return lyrics
 
