@@ -9,15 +9,12 @@ def recite(start, take=1):
 
             break
 
-        plural_1 = "bottles" if start != 1 else "bottle"
-        plural_2 = "bottles" if start - 1 != 1 else "bottle"
-        bottle_qty_1 = f"{start}" if start > 0 else "no more"
-        bottle_qty_2 = f"{start - 1}" if start - 1 > 0 else "no more"
-        bottle_prefix = "one" if start - 1 > 0 else "it"
+        bottles = get_bottles(start)
+        bottle_prefix = "one" if start - 1 else "it"
 
         lyrics += [
-            f"{bottle_qty_1} {plural_1} of beer on the wall, {bottle_qty_1} {plural_1} of beer.",
-            f"Take {bottle_prefix} down and pass it around, {bottle_qty_2} {plural_2} of beer on the wall."]
+            f"{bottles} of beer on the wall, {bottles} of beer.",
+            f"Take {bottle_prefix} down and pass it around, {get_bottles(start - 1)} of beer on the wall."]
 
         take -= 1
         start -= 1
@@ -26,3 +23,7 @@ def recite(start, take=1):
             lyrics.append("")
 
     return lyrics
+
+
+def get_bottles(number):
+    return f"{number or 'no more'} {'bottles' if number != 1 else 'bottle'}"
