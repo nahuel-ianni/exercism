@@ -11,12 +11,11 @@ public class SpaceAge
     const double orbitalPeriodUranus  = 84.016846;
     const double orbitalPeriodNeptune = 164.79132;
     const int yearlySecondsOnEarth = 31557600;
+
     readonly int seconds;
 
-    public SpaceAge(int seconds)
-    {
+    public SpaceAge(int seconds) => 
         this.seconds = seconds;
-    }
 
     public double OnEarth() => this.CalculateYears(orbitalPeriodEarth);
 
