@@ -10,11 +10,9 @@ def recite(start, take=1):
             break
 
         bottles = get_bottles(start)
-        bottle_prefix = "one" if start - 1 else "it"
-
         lyrics += [
             f"{bottles} of beer on the wall, {bottles} of beer.",
-            f"Take {bottle_prefix} down and pass it around, {get_bottles(start - 1)} of beer on the wall."]
+            f"Take {'one' if start - 1 else 'it'} down and pass it around, {get_bottles(start - 1)} of beer on the wall."]
 
         take -= 1
         start -= 1
