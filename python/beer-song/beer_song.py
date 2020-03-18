@@ -5,7 +5,7 @@ def recite(start, take=1):
         if start == 0:
             lyrics += [
                 "No more bottles of beer on the wall, no more bottles of beer.",
-                f"Go to the store and buy some more, 99 bottles of beer on the wall."]
+                "Go to the store and buy some more, 99 bottles of beer on the wall."]
 
             break
 
