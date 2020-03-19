@@ -1,16 +1,15 @@
-score_table = {
-    "AEIOULNRST" : 1,
-    "DG"         : 2,
-    "BCMP"       : 3,
-    "FHVWY"      : 4,
-    "K"          : 5,
-    "JX"         : 8,
-    "QZ"         : 10
-}
+from enum import IntEnum
+
+
+class Score(IntEnum):
+    A = E = I = O = U = L = N = R = S = T = 1
+    D = G = 2
+    B = C = M = P = 3
+    F = H = V = W = Y = 4
+    K = 5
+    J = X = 8
+    Q = Z = 10
 
 
 def score(word):
-    return sum(value 
-                for ch in word.upper() 
-                for key, value in score_table.items() 
-                if ch in key)
+    return sum(Score[ch] for ch in word.upper())
