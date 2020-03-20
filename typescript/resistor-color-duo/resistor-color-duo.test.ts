@@ -25,6 +25,7 @@ describe("Resistor Colors", () => {
     const resistorColor = new ResistorColor(["green", "brown", "orange"])
     expect(resistorColor.value()).toEqual(51)
   })
+  
   test("Throws error when not enough colors", () => {
     expect(() => new ResistorColor(["green"])).toThrowError(
       "At least two colors need to be present"
