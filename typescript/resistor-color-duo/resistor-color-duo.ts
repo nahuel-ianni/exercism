@@ -1,18 +1,10 @@
 export class ResistorColor {
   private colors: string[];
-  private table = new Map<string, number>(
+  private table =
     [
-      [ "black" , 0 ],
-      [ "brown" , 1 ],
-      [ "red"   , 2 ],
-      [ "orange", 3 ],
-      [ "yellow", 4 ],
-      [ "green" , 5 ],
-      [ "blue"  , 6 ],
-      [ "violet", 7 ],
-      [ "grey"  , 8 ],
-      [ "white" , 9 ],
-    ]);
+      "black", "brown", "red", "orange", "yellow",
+      "green", "blue", "violet", "grey", "white",
+    ];
 
   constructor(colors: string[]) {
     if (colors.length < 2)
@@ -22,8 +14,8 @@ export class ResistorColor {
   }
 
   value = (): number => {
-    const value1 = this.table.get(this.colors[0]);
-    const value2 = this.table.get(this.colors[1]);
+    const value1 = this.table.indexOf(this.colors[0]);
+    const value2 = this.table.indexOf(this.colors[1]);
 
     if (value1 != null && value2 != null)
       return 10 * value1 + value2;
