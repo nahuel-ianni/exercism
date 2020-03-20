@@ -1,45 +1,53 @@
+from enum import IntEnum
+
+
+class PlanetarySeconds(IntEnum):
+    Earth   = 31557600
+    Mercury = 0.2408467  * Earth
+    Venus   = 0.61519726 * Earth
+    Mars    = 1.8808158  * Earth
+    Jupiter = 11.862615  * Earth
+    Saturn  = 29.447498  * Earth
+    Uranus  = 84.016846  * Earth
+    Neptune = 164.79132  * Earth
+
+
 class SpaceAge:
     def __init__(self, seconds):
         self.seconds = seconds
 
 
     def on_earth(self):
-        return self.calculate_years(1)
+        return self.calculate_years(PlanetarySeconds.Earth)
 
 
     def on_mercury(self):
-        return self.calculate_years(0.2408467)
+        return self.calculate_years(PlanetarySeconds.Mercury)
 
 
     def on_venus(self):
-         return self.calculate_years(0.61519726)
+         return self.calculate_years(PlanetarySeconds.Venus)
 
 
     def on_mars(self):
-        return self.calculate_years(1.8808158)
+        return self.calculate_years(PlanetarySeconds.Mars)
 
 
     def on_jupiter(self):
-        return self.calculate_years(11.862615)
+        return self.calculate_years(PlanetarySeconds.Jupiter)
 
 
     def on_saturn(self):
-        return self.calculate_years(29.447498)
+        return self.calculate_years(PlanetarySeconds.Saturn)
 
 
     def on_uranus(self):
-        return self.calculate_years(84.016846)
+        return self.calculate_years(PlanetarySeconds.Uranus)
 
 
     def on_neptune(self):
-        return self.calculate_years(164.79132)
-
-    
-    def orbital_period_to_seconds(self, orbital_period):
-        return orbital_period * 31557600
+        return self.calculate_years(PlanetarySeconds.Neptune)
 
 
-    def calculate_years(self, orbital_period):
-        planetary_seconds = self.orbital_period_to_seconds(orbital_period)
-        
+    def calculate_years(self, planetary_seconds):        
         return round(self.seconds / planetary_seconds, 2)
