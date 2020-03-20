@@ -17,7 +17,7 @@ export class ResistorColor {
     const value1 = this.table.indexOf(this.colors[0]);
     const value2 = this.table.indexOf(this.colors[1]);
 
-    if (value1 != null && value2 != null)
+    if (value1 >= 0 && value2 >= 0)
       return 10 * value1 + value2;
     
     throw new Error("Not all requested colors were found");
