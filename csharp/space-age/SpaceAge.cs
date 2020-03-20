@@ -2,38 +2,35 @@ using System;
 
 public class SpaceAge
 {
-    const int yearlySecondsOnEarth = 31557600;
-    const double planetarySecondsMercury = 0.2408467 * yearlySecondsOnEarth;
-    const double planetarySecondsVenus   = 0.61519726 * yearlySecondsOnEarth;
-    const double planetarySecondsMars    = 1.8808158 * yearlySecondsOnEarth;
-    const double planetarySecondsJupiter = 11.862615 * yearlySecondsOnEarth;
-    const double planetarySecondsSaturn  = 29.447498 * yearlySecondsOnEarth;
-    const double planetarySecondsUranus  = 84.016846 * yearlySecondsOnEarth;
-    const double planetarySecondsNeptune = 164.79132 * yearlySecondsOnEarth;
+    readonly double spaceAgeOnEarth, spaceAgeOnMercury, spaceAgeOnVenus, 
+                    spaceAgeOnMars, spaceAgeOnJupiter, spaceAgeOnSaturn, 
+                    spaceAgeOnUranus, spaceAgeOnNeptune;
 
-    readonly int seconds;
-
-    public SpaceAge(int seconds) => 
-        this.seconds = seconds;
-
-    public double OnEarth() => this.CalculateYears(yearlySecondsOnEarth);
-
-    public double OnMercury() => this.CalculateYears(planetarySecondsMercury);
-
-    public double OnVenus() => this.CalculateYears(planetarySecondsVenus);
-
-    public double OnMars() => this.CalculateYears(planetarySecondsMars);
-
-    public double OnJupiter() => this.CalculateYears(planetarySecondsJupiter);
-
-    public double OnSaturn() => this.CalculateYears(planetarySecondsSaturn);
-
-    public double OnUranus() => this.CalculateYears(planetarySecondsUranus);
-
-    public double OnNeptune() => this.CalculateYears(planetarySecondsNeptune);
-
-    private double CalculateYears(double planetarySeconds)
+    public SpaceAge(int seconds)
     {
-        return Math.Round(this.seconds / planetarySeconds, 2);
+        var yearlySecondsOnEarth = 31557600;
+
+        spaceAgeOnEarth   = CalculateYears(seconds, yearlySecondsOnEarth);
+        spaceAgeOnMercury = CalculateYears(seconds, 0.2408467  * yearlySecondsOnEarth);
+        spaceAgeOnVenus   = CalculateYears(seconds, 0.61519726 * yearlySecondsOnEarth);
+        spaceAgeOnMars    = CalculateYears(seconds, 1.8808158  * yearlySecondsOnEarth);
+        spaceAgeOnJupiter = CalculateYears(seconds,  11.862615 * yearlySecondsOnEarth);
+        spaceAgeOnSaturn  = CalculateYears(seconds, 29.447498  * yearlySecondsOnEarth);
+        spaceAgeOnUranus  = CalculateYears(seconds, 84.016846  * yearlySecondsOnEarth);
+        spaceAgeOnNeptune = CalculateYears(seconds, 164.79132  * yearlySecondsOnEarth);
+    }
+
+    public double OnEarth() => spaceAgeOnEarth;
+    public double OnMercury() => spaceAgeOnMercury;
+    public double OnVenus() => spaceAgeOnVenus;
+    public double OnMars() => spaceAgeOnMars;
+    public double OnJupiter() => spaceAgeOnJupiter;
+    public double OnSaturn() => spaceAgeOnSaturn;
+    public double OnUranus() => spaceAgeOnUranus;
+    public double OnNeptune() => spaceAgeOnNeptune;
+    
+    private static double CalculateYears(int seconds, double planetarySeconds)
+    {
+        return Math.Round(seconds / planetarySeconds, 2);
     }
 }
