@@ -29,8 +29,6 @@ public class SpaceAge
     public double OnUranus() => spaceAgeOnUranus;
     public double OnNeptune() => spaceAgeOnNeptune;
 
-    private static double CalculateYears(int seconds, double planetarySeconds)
-    {
-        return Math.Round(seconds / planetarySeconds, 2);
-    }
+    private static double CalculateYears(int seconds, double planetarySeconds) =>
+        Math.Round(seconds / planetarySeconds, 2);
 }
