@@ -14,10 +14,6 @@ js/ts.js
 .eslintignore
 .eslintrc
 
-# Config files
-jest.config.js
-tsconfig.json
-
 # Yarn
 yarn.lock
 
