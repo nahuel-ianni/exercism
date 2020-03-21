@@ -4,6 +4,15 @@ public static class Hamming
 {
     public static int Distance(string firstStrand, string secondStrand)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        if (firstStrand.Length != secondStrand.Length)
+            throw new ArgumentException("Strands are of different length.");
+
+        var distance = 0;
+
+        for (var index = 0; index < firstStrand.Length; index++)
+            if (firstStrand[index] != secondStrand[index])
+                distance++;
+
+        return distance;
     }
 }
