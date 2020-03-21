@@ -7,11 +7,11 @@ public class HighScores
     private readonly List<int> scores;
 
     public HighScores(List<int> list) =>
-        scores = list;
+        scores = list ?? new List<int>();
 
     public List<int> Scores() => scores;
 
-    public int Latest() => scores.Last();
+    public int Latest() => scores.LastOrDefault();
 
     public int PersonalBest() => scores.Max();
 
