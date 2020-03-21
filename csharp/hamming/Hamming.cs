@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 public static class Hamming
 {
@@ -7,12 +8,6 @@ public static class Hamming
         if (firstStrand.Length != secondStrand.Length)
             throw new ArgumentException("Strands are of different length.");
 
-        var distance = 0;
-
-        for (var index = 0; index < firstStrand.Length; index++)
-            if (firstStrand[index] != secondStrand[index])
-                distance++;
-
-        return distance;
+        return firstStrand.Zip(secondStrand, (c1, c2) => (c1 != c2)).Count(x => x);
     }
 }
