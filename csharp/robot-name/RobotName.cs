@@ -8,15 +8,14 @@ public class Robot
 
     public static IList<string> Names = new List<string>();
 
-    Random random = new Random();
-
-    public string Name { get; internal set; }
+    public string Name { get; private set; }
 
     public Robot() => Reset();
 
     public void Reset()
     {
-        string formerName = Name;
+        var random = new Random();
+        var formerName = Name;
 
         do
         {
