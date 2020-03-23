@@ -23,8 +23,7 @@ public class Robot
                 "{0}{1}{2}",
                 AllowedChars[random.Next(AllowedChars.Length)],
                 AllowedChars[random.Next(AllowedChars.Length)],
-                random.Next(AllowedUpperLimitDigit).ToString("D3")
-            );
+                random.Next(AllowedUpperLimitDigit).ToString("D3"));
         }
         while (Names.Contains(Name));
 
