@@ -1,0 +1,6 @@
+# VS Code folders
+.vs/
+.vscode/
+
+# CLI
+.exercism

@@ -8,8 +8,5 @@ node_modules
 # Babel
 babel.config.js
 
-# CLI
-.exercism
-
 # npm dependencies
 package-lock.json

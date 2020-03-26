@@ -1,7 +1,3 @@
-### Python plugins ###
+# Python plugins
 .pytest_cache/
 __pycache__/
-
-
-### CLI ###
-.exercism/
