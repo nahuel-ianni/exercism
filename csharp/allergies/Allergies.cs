@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+/// Used whenever the enumerable represents a collection of 
+/// possible values, rather than a single value. 
+/// Such collections are often used with bitwise operators.
+[Flags]
 public enum Allergen
 {
     Eggs         = 1,
@@ -16,14 +20,15 @@ public enum Allergen
 
 public class Allergies
 {
-    private readonly IEnumerable<Allergen> allergens = Enum.GetValues(typeof(Allergen)).Cast<Allergen>();
-    private readonly int mask;
+    private readonly IEnumerable<Allergen> allergens = 
+        Enum.GetValues(typeof(Allergen)).Cast<Allergen>();
+    private readonly Allergen mask;
 
     public Allergies(int mask) =>
-        this.mask = mask;
+        this.mask = (Allergen)mask;
 
     public bool IsAllergicTo(Allergen allergen) =>
-        (this.mask & (int)allergen) != 0;
+        (this.mask & allergen) != 0;
 
     public Allergen[] List() =>
         allergens.Where(x => IsAllergicTo(x)).ToArray();
