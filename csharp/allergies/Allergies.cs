@@ -28,8 +28,8 @@ public class Allergies
         this.mask = (Allergen)mask;
 
     public bool IsAllergicTo(Allergen allergen) =>
-        (this.mask & allergen) != 0;
+        mask.HasFlag(allergen);
 
     public Allergen[] List() =>
-        allergens.Where(x => IsAllergicTo(x)).ToArray();
+        allergens.Where(IsAllergicTo).ToArray();
 }
