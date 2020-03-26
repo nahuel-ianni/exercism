@@ -16,8 +16,8 @@ public enum Allergen
 
 public class Allergies
 {
-    readonly IEnumerable<Allergen> allergens = Enum.GetValues(typeof(Allergen)).Cast<Allergen>().AsEnumerable();
-    readonly int mask;
+    private readonly IEnumerable<Allergen> allergens = Enum.GetValues(typeof(Allergen)).Cast<Allergen>();
+    private readonly int mask;
 
     public Allergies(int mask) =>
         this.mask = mask;
