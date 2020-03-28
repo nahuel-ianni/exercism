@@ -1,18 +1,21 @@
-using System;
 using System.Linq;
 using System.Collections.Generic;
 
 public class GradeSchool
 {
-    private readonly IList<(string Name, int Grade)> students = 
+    private IList<(string Name, int Grade)> students =
         new List<(string, int)>();
 
-    public void Add(string student, int grade) =>
+    public void Add(string student, int grade)
+    {
         students.Add((student, grade));
+        students = students.OrderBy(x => x.Grade)
+                           .ThenBy(x => x.Name).ToList();
+    }
 
     public IEnumerable<string> Roster() =>
-        students.OrderBy(x => x.Grade).ThenBy(x => x.Name).Select(x => x.Name);
+        students.Select(x => x.Name);
 
     public IEnumerable<string> Grade(int grade) =>
-        students.Where(x => x.Grade == grade).Select(x => x.Name).OrderBy(x => x);
+        students.Where(x => x.Grade == grade).Select(x => x.Name);
 }
