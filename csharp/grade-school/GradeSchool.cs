@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class GradeSchool
 {
     private List<(string Name, int Grade)> students = 
-        new List<(string Name, int Grade)>();
+        new List<(string, int)>();
 
     public void Add(string student, int grade)
     {
