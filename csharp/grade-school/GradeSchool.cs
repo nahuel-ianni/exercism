@@ -3,14 +3,15 @@ using System.Collections.Generic;
 
 public class GradeSchool
 {
-    private IList<(string Name, int Grade)> students =
-        new List<(string, int)>();
+    private List<(string Name, int Grade)> students = 
+        new List<(string Name, int Grade)>();
 
     public void Add(string student, int grade)
     {
         students.Add((student, grade));
-        students = students.OrderBy(x => x.Grade)
-                           .ThenBy(x => x.Name).ToList();
+        students.Sort((x, y) => x.Grade == y.Grade
+            ? string.Compare(x.Name, y.Name)
+            : x.Grade.CompareTo(y.Grade));
     }
 
     public IEnumerable<string> Roster() =>
