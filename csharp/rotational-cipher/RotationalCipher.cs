@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 public static class RotationalCipher
 {
@@ -12,23 +12,35 @@ public static class RotationalCipher
 
     public static string Rotate(string text, int shiftKey)
     {
-        return String.Concat(
-                from ch in text
-                select char.IsLetter(ch)
-                    ? ProcessOffset(ch, shiftKey)       //Convert.ToByte(ch), shiftKey)
-                    : ch);
+        var sb = new StringBuilder();
+        var alphabet =
+            Alphabet.GetRange(shiftKey, Alphabet.Count - shiftKey)
+                    .Concat(Alphabet.GetRange(0, shiftKey));
+
+        foreach (var ch in text)
+        {
+            sb.Append(
+                char.IsLetter(ch)
+                    ? char.IsLower(ch) 
+                        ? char.ToLower(alphabet.ElementAt(Alphabet.IndexOf(char.ToUpper(ch)))) 
+                        : alphabet.ElementAt(Alphabet.IndexOf(ch))
+                    : ch
+            );
+        }
+
+        return sb.ToString();
     }
 
-    private static char ProcessOffset(char ch, int offset)
-    {
-        var alphabet = 
-            Alphabet.GetRange(offset, Alphabet.Count - offset)
-                    .Concat(Alphabet.GetRange(0, offset));
+    // private static char ProcessOffset(char ch, int offset)
+    // {
+    //     var alphabet = 
+    //         Alphabet.GetRange(offset, Alphabet.Count - offset)
+    //                 .Concat(Alphabet.GetRange(0, offset));
 
-        return char.IsLower(ch) 
-                ? char.ToLower(alphabet.ElementAt(char.ToUpper(ch))) 
-                : alphabet.ElementAt(ch);
-    }
+    //     return char.IsLower(ch) 
+    //             ? char.ToLower(alphabet.ElementAt(char.ToUpper(ch))) 
+    //             : alphabet.ElementAt(ch);
+    // }
 
     // private static char ProcessOffset(byte b, int offset)
     // {
