@@ -25,34 +25,4 @@ To install pytest, run the following command:
 Pytest can easily execute all tests in a file by executing the `pytest` command from the test file's directory.
 
 If you want to execute all tests on a particular file, the command accepts a path as a parameter: `pytest <filename>.py`.
-
-### Debugging in Python
-Python introduces built in breakpoint functionalities via the [PEP-0553](https://www.python.org/dev/peps/pep-0553/) specification.
-
-This PEP proposes adding a new built-in function called `breakpoint()` which enters a Python debugger at the point of the call and allows the user to pause execution and inspect elements or change values executing on the current session.
-
-When your code hits one of the `breakpoint()` statements, you can interact with the script with several different [debugger commands](https://docs.python.org/2/library/pdb.html), such as:
-
-- `c` continue execution
-- `n` step to the next line within the same function
-- `s` step to the next line in this function or a called function
-- `q` quit the debugger/execution
-- `locals()` shows all local variables in the environment
-- `vars(object)` shows all relevant info on the inspected object
-- `exit()` (or *CTRL + D*) sets and interrupt
-- *CTRL + C* sends a cancellation command to the console 
-
----
-
-## Helpful resources
-- [The Python standard library](https://docs.python.org/3/library/index.html)
-- [Python tutorials and helpful information](https://realpython.com/)
-- [Virtual environments](https://docs.python.org/3/library/venv.html)
-- [Equivalent Linq methods in Python](https://www.markheath.net/post/python-equivalents-of-linq-methods)
-- [Configuration file options and examples](https://martin-thoma.com/configuration-files-in-python/)
-- [List comprehension](https://realpython.com/list-comprehension-python/)
-
-  - `new_list = [expression for member in iterable]`
-  - `new_list = [expression for member in iterable (if conditional)]`
-  - `new_list = [expression (if conditional) for member in iterable]`
   
