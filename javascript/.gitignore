@@ -5,8 +5,5 @@ node_modules
 .eslintcache
 .eslintrc
 
-# Babel
-babel.config.js
-
 # npm dependencies
 package-lock.json
