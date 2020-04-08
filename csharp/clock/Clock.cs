@@ -13,28 +13,33 @@ public class Clock
         _ = minutes >= 0
             ? Add(minutes)
             : Subtract(minutes);
-
-        // this.minutes = minutes >= 0
-        //     ? minutes % 60
-        //     : 60 - ((minutes * -1) % 60);
-
-        // this.hours = hours >= 0
-        //     ? (hours + minutes / 60) % 24
-        //     : 24 - ((hours * -1) % 24);
     }
 
-    public Clock Add(int minutes)
+    private int HoursToMinutes(int hours) =>
+        hours * 60;
+
+    private int MinuteOnTheHour(int minutes) =>
+        minutes >= 0
+            ? minutes % 60
+            : minutes % 60 + 60;
+
+    private int HourOnTheDay(int minutes) =>
+        minutes >= 0
+            ? (minutes / 60) % 24
+            : (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;           //: (int)Math.Ceiling(decimal.Divide(minutes, 60)) % 24 + 24;     // (minutes / 60) % 24 + 24;
+
+    public Clock Add(int minutesToAdd)
     {
-        this.minutes += minutes % 60;
-        this.hours += (minutes / 60) % 24;
+        minutes = MinuteOnTheHour(minutes + MinuteOnTheHour(minutesToAdd));
+        hours = HourOnTheDay(HoursToMinutes(hours) + HoursToMinutes(HourOnTheDay(minutesToAdd)));
 
         return this;
     }
 
-    public Clock Subtract(int minutes)
+    public Clock Subtract(int minutesToSub)
     {
-        this.minutes = (60 - (minutes * -1)) % 60;
-        this.hours = (24 - (((minutes * -1) / 60) % 24)) % 24;
+        minutes = MinuteOnTheHour(minutes + MinuteOnTheHour(minutesToSub));
+        hours = HourOnTheDay(HoursToMinutes(hours) + HoursToMinutes(HourOnTheDay(minutesToSub)));
 
         return this;
     }
