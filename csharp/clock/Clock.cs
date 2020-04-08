@@ -24,14 +24,16 @@ public class Clock
             : minutes % 60 + 60;
 
     private int HourOnTheDay(int minutes) =>
-        minutes >= 0
-            ? (minutes / 60) % 24
-            : (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;           //: (int)Math.Ceiling(decimal.Divide(minutes, 60)) % 24 + 24;     // (minutes / 60) % 24 + 24;
+        (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;
+        
+        // minutes >= 0
+        //     ? (minutes / 60) % 24
+        //     : (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;           //: (int)Math.Ceiling(decimal.Divide(minutes, 60)) % 24 + 24;     // (minutes / 60) % 24 + 24;
 
     public Clock Add(int minutesToAdd)
     {
         minutes = MinuteOnTheHour(minutes + MinuteOnTheHour(minutesToAdd));
-        hours = HourOnTheDay(HoursToMinutes(hours) + HoursToMinutes(HourOnTheDay(minutesToAdd)));
+        hours = HourOnTheDay(HoursToMinutes(hours + HourOnTheDay(minutesToAdd)));
 
         return this;
     }
@@ -39,7 +41,7 @@ public class Clock
     public Clock Subtract(int minutesToSub)
     {
         minutes = MinuteOnTheHour(minutes + MinuteOnTheHour(minutesToSub));
-        hours = HourOnTheDay(HoursToMinutes(hours) + HoursToMinutes(HourOnTheDay(minutesToSub)));
+        hours = HourOnTheDay(HoursToMinutes(hours + HourOnTheDay(minutesToSub)));
 
         return this;
     }
