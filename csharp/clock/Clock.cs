@@ -1,49 +1,37 @@
-using System;
-
 public class Clock
 {
     private int hours, minutes = 0;
 
     public Clock(int hours, int minutes)
     {
-        _ = hours >= 0
-            ? Add(hours * 60)
-            : Subtract(hours * 60);
+        var time = OffsetTime(HoursToMinutes(hours) + minutes);
 
-        _ = minutes >= 0
-            ? Add(minutes)
-            : Subtract(minutes);
+        this.hours = time.Hours;
+        this.minutes = time.Minutes;
     }
 
-    private int HoursToMinutes(int hours) =>
-        hours * 60;
-
-    private int MinuteOnTheHour(int minutes) =>
-        minutes >= 0
-            ? minutes % 60
-            : minutes % 60 + 60;
-
-    private int HourOnTheDay(int minutes) =>
-        (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;
+    private (int Hours, int Minutes) OffsetTime(int offset)
+    {
+        var timespan = HoursToMinutes(hours) + minutes + offset;
         
-        // minutes >= 0
-        //     ? (minutes / 60) % 24
-        //     : (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;           //: (int)Math.Ceiling(decimal.Divide(minutes, 60)) % 24 + 24;     // (minutes / 60) % 24 + 24;
+        return (HourOnTheDay(timespan), MinuteOnTheHour(timespan));
+    }
 
     public Clock Add(int minutesToAdd)
     {
-        minutes = MinuteOnTheHour(minutes + MinuteOnTheHour(minutesToAdd));
-        hours = HourOnTheDay(HoursToMinutes(hours + HourOnTheDay(minutesToAdd)));
+        var time = OffsetTime(minutesToAdd);
 
-        return this;
+        return new Clock(time.Hours, time.Minutes);
     }
 
     public Clock Subtract(int minutesToSub)
     {
-        minutes = MinuteOnTheHour(minutes + MinuteOnTheHour(minutesToSub));
-        hours = HourOnTheDay(HoursToMinutes(hours + HourOnTheDay(minutesToSub)));
+        var time = OffsetTime(
+            minutesToSub > 0 
+                ? minutesToSub * -1 
+                : minutesToSub);
 
-        return this;
+        return new Clock(time.Hours, time.Minutes);
     }
 
     public override bool Equals(object obj) =>
@@ -51,4 +39,13 @@ public class Clock
 
     public override string ToString() =>
         $"{hours.ToString("D2")}:{minutes.ToString("D2")}";
+
+    private int HourOnTheDay(int minutes) =>
+        (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;
+        
+    private int HoursToMinutes(int hours) =>
+        hours * 60;
+
+    private int MinuteOnTheHour(int minutes) =>
+        ((minutes % 60) + 60) % 60;
 }
