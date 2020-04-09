@@ -2,7 +2,7 @@ public class Clock
 {
     private int hours, minutes = 0;
 
-    public Clock() { }
+    private Clock() { }
 
     public Clock(int hours, int minutes)
     {
