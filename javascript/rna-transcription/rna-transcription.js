@@ -8,12 +8,8 @@ const dnaTranscription = {
 export const toRna = (dna) => {
   let rna = "";
 
-  if (dna.length == 0)
-    return rna;
-
-  dna.split("").forEach(element => {
-    rna += dnaTranscription[element];
-  });
+  for (const ch of dna)
+    rna += dnaTranscription[ch];
 
   return rna;
 };
