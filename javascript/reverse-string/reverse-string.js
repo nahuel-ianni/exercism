@@ -1,8 +1,8 @@
-//
-// This is only a SKELETON file for the 'Reverse String' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const reverseString = (sequence) => {
+  let output = "";
 
-export const reverseString = () => {
-  throw new Error("Remove this statement and implement this function");
+  for (let i = sequence.length - 1; i >= 0; i--)
+    output += sequence.charAt(i);
+
+  return output;
 };
