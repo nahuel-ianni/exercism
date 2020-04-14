@@ -1,8 +1,10 @@
 export const reverseString = (sequence) => {
-  let output = "";
+  // let output = "";
 
-  for (let i = sequence.length - 1; i >= 0; i--)
-    output += sequence[i];
+  // for (let i = sequence.length - 1; i >= 0; i--)
+  //   output += sequence[i];
 
-  return output;
+  // return output;
+
+  return sequence.split("").reverse().join("");
 };
