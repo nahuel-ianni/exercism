@@ -5,11 +5,14 @@ const dnaTranscription = {
   "A": "U"
 }
 
-export const toRna = (dna) => {
-  let rna = "";
+export const toRna = (dna) =>
+  [...dna].map(ch => dnaTranscription[ch]).join("");
 
-  for (const ch of dna)
-    rna += dnaTranscription[ch];
+// export const toRna = (dna) => {
+//   let rna = "";
 
-  return rna;
-};
+//   for (const ch of dna)
+//     rna += dnaTranscription[ch];
+
+//   return rna;
+// };
