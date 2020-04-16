@@ -1,12 +1,12 @@
+using System;
+
 public class Clock
 {
     private int hours, minutes = 0;
 
-    private Clock() { }
-
     public Clock(int hours, int minutes)
     {
-        var time = OffsetTime(HoursToMinutes(hours) + minutes);
+        var time = OffsetTime((hours * 60) + minutes);
 
         this.hours = time.Hours;
         this.minutes = time.Minutes;
@@ -14,27 +14,12 @@ public class Clock
 
     public Clock Add(int minutesToAdd)
     {
-        var time = OffsetTime(minutesToAdd);
-
-        return new Clock()
-        {
-            hours = time.Hours,
-            minutes = time.Minutes
-        };
+        return new Clock(hours, minutes + minutesToAdd);
     }
 
     public Clock Subtract(int minutesToSub)
     {
-        var time = OffsetTime(
-            minutesToSub > 0
-                ? minutesToSub * -1
-                : minutesToSub);
-
-        return new Clock()
-        {
-            hours = time.Hours,
-            minutes = time.Minutes
-        };
+        return new Clock(hours, minutes - Math.Abs(minutesToSub));
     }
 
     public override bool Equals(object obj) =>
@@ -46,15 +31,12 @@ public class Clock
     private int HourOnTheDay(int minutes) =>
         (int)((decimal.Divide(minutes, 60)) % 24 + 24) % 24;
 
-    private int HoursToMinutes(int hours) =>
-        hours * 60;
-
     private int MinuteOnTheHour(int minutes) =>
         ((minutes % 60) + 60) % 60;
 
     private (int Hours, int Minutes) OffsetTime(int offset)
     {
-        var timespan = HoursToMinutes(hours) + minutes + offset;
+        var timespan = (hours * 60) + minutes + offset;
 
         return (HourOnTheDay(timespan), MinuteOnTheHour(timespan));
     }
