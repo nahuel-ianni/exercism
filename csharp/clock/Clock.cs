@@ -24,6 +24,9 @@ public class Clock
 
     public override bool Equals(object obj) =>
         this.ToString() == obj.ToString();
+    
+    public override int GetHashCode() =>
+        base.GetHashCode();
 
     public override string ToString() =>
         $"{hours.ToString("D2")}:{minutes.ToString("D2")}";
@@ -39,5 +42,5 @@ public class Clock
         var timespan = (hours * 60) + minutes + offset;
 
         return (HourOnTheDay(timespan), MinuteOnTheHour(timespan));
-    }
+    }    
 }
