@@ -19,6 +19,8 @@ Once installed, the CLI needs to be configured by running the following command 
 - C#
 - Javascript
 - Python
+
+## Paused tracks
 - Typescript
 
 ## Tracks I'm interested in
