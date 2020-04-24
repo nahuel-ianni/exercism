@@ -18,14 +18,14 @@ class Numbers(Enum):
     thirteen = 13
 
 prefix = {
-    20       : "twenty",
-    30       : "thirty",
-    40       : "forty",
-    50       : "fifty",
-    60       : "sixty",
-    70       : "seventy",
-    80       : "eighty",
-    90       : "ninety",
+    2 : "twenty",
+    3 : "thirty",
+    4 : "forty",
+    5 : "fifty",
+    6 : "sixty",
+    7 : "seventy",
+    8 : "eighty",
+    9 : "ninety",
 }
 
 
@@ -39,7 +39,13 @@ def say(number):
         output = Numbers(number).name
     
     elif number < 20:
-        number %= 10
-        output = f"{Numbers(number).name}teen"
+        n = number % 10
+        output = f"{Numbers(n).name}teen"
+    
+    elif number < 100:
+        q = number // 10
+        r = number % 10
+        
+        output = f"{prefix[q]}-{Numbers(r).name}" if r else prefix[q]
     
     return output
