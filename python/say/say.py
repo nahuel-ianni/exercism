@@ -17,16 +17,15 @@ class Numbers(Enum):
     twelve   = 12
     thirteen = 13
 
-prefix = {
-    2 : "twenty",
-    3 : "thirty",
-    4 : "forty",
-    5 : "fifty",
-    6 : "sixty",
-    7 : "seventy",
-    8 : "eighty",
-    9 : "ninety",
-}
+class Prefix(Enum):
+    twenty  = 2
+    thirty  = 3
+    forty   = 4
+    fifty   = 5
+    sixty   = 6
+    seventy = 7
+    eighty  = 8
+    ninety  = 9
 
 
 def say(number):
@@ -39,13 +38,13 @@ def say(number):
         output = Numbers(number).name
     
     elif number < 20:
-        n = number % 10
-        output = f"{Numbers(n).name}teen"
+        r = number % 10
+        output = f"{Numbers(r).name}teen"
     
     elif number < 100:
         q = number // 10
         r = number % 10
         
-        output = f"{prefix[q]}-{Numbers(r).name}" if r else prefix[q]
+        output = f"{Prefix(q).name}-{Numbers(r).name}" if r else Prefix(q).name
     
     return output
