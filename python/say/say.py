@@ -17,13 +17,29 @@ class Numbers(Enum):
     twelve   = 12
     thirteen = 13
 
+prefix = {
+    20       : "twenty",
+    30       : "thirty",
+    40       : "forty",
+    50       : "fifty",
+    60       : "sixty",
+    70       : "seventy",
+    80       : "eighty",
+    90       : "ninety",
+}
+
+
 def say(number):
     output = ""
 
     if number < 0 or number > 999999999999:
         raise ValueError("Value out of range")
 
-    if number < 14:
+    elif number < 14:
         output = Numbers(number).name
+    
+    elif number < 20:
+        number %= 10
+        output = f"{Numbers(number).name}teen"
     
     return output
