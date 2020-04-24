@@ -47,4 +47,10 @@ def say(number):
         
         output = f"{Prefix(q).name}-{Numbers(r).name}" if r else Prefix(q).name
     
+    elif number < 1000:
+        q = number // 100
+        r = number % 100
+
+        output = f"{Numbers(q).name} hundred {say(r)}" if r else f"{Numbers(q).name} hundred"
+    
     return output
