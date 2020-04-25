@@ -41,28 +41,26 @@ class Suffix(Enum):
 
 
 def say(number):
-    if number < 0 or number > 999999999999:
+    if number < 0 or number > 1e12:
         raise ValueError("Value out of range")
 
     elif not number:
         return Number(0).name
 
-    output = ""
+    output = []
     digits = [n for n in f"{number:,}".split(",")]
-    length = len(digits)
-    q, r = divmod(int(digits[0]), 100)
 
-    if q:
-        output += f"{parse(q)} {Suffix(1).name} "
+    while digits:
+        length = len(digits)
+        
+        output.append(parse(int(digits[0])))
 
-    if r:
-        output += f"{parse(r)}"
+        if length > 1 and int(digits[0]):
+            output.append(Suffix(length).name)
 
-    if length > 1:
-        number = int("".join(n for n in digits[1:]))
-        output += f" {Suffix(length).name} {say(number)}"
+        digits = digits[1:]
 
-    return output.rstrip().replace(f" {Number(0).name}", "")
+    return " ".join(n for n in output if n != Number(0).name)
 
 
 def parse(number):
@@ -73,8 +71,12 @@ def parse(number):
         r = number % 10
         output = f"{Number(r).name}{Suffix(0).name}"
 
-    else:
+    elif number < 100:
         q, r = divmod(number, 10)
         output = f"{Prefix(q).name}-{Number(r).name}" if r else Prefix(q).name
+    
+    else:
+        q, r = divmod(number, 100)
+        output = f"{Number(q).name} {Suffix(1).name} {parse(r)}" if r else f"{Number(q).name} {Suffix(1).name}"
 
     return output
