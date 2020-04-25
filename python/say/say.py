@@ -53,10 +53,10 @@ def say(number):
     q, r = divmod(int(digits[0]), 100)
 
     if q:
-        output += f"{xxx(q)} {Suffix(1).name} "
+        output += f"{parse(q)} {Suffix(1).name} "
 
     if r:
-        output += f"{xxx(r)}"
+        output += f"{parse(r)}"
 
     if length > 1:
         number = int("".join(n for n in digits[1:]))
@@ -65,7 +65,7 @@ def say(number):
     return output.rstrip().replace(f" {Number(0).name}", "")
 
 
-def xxx(number):
+def parse(number):
     if number < 14:
         output = Number(number).name
 
