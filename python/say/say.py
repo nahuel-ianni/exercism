@@ -74,7 +74,7 @@ def parse(number):
     elif number < 100:
         q, r = divmod(number, 10)
         output = f"{Prefix(q).name}-{Number(r).name}" if r else Prefix(q).name
-    
+
     else:
         q, r = divmod(number, 100)
         output = f"{Number(q).name} {Suffix(1).name} {parse(r)}" if r else f"{Number(q).name} {Suffix(1).name}"
