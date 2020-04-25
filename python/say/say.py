@@ -45,7 +45,7 @@ def say(number):
         raise ValueError("Value out of range")
 
     elif not number:
-        return Number(number).name
+        return Number(0).name
 
     output = ""
     digits = [n for n in f"{number:,}".split(",")]
