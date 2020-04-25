@@ -51,15 +51,15 @@ def say(number):
         output = f"{Numbers(r).name}teen"
 
     elif number < 100:
-        q, r = division(number, 10)
+        q, r = divmod(number, 10)
         output = f"{Prefix(q).name}-{Numbers(r).name}" if r else Prefix(q).name
 
     elif number < 1000:
-        q, r = division(number, 100)
+        q, r = divmod(number, 100)
         output = f"{Numbers(q).name} hundred {say(r)}" if r else f"{Numbers(q).name} hundred"
 
     else:
-        q, r = division(number, 1000)
+        q, r = divmod(number, 1000)
         l = len(str(number)) % 3
 
         if r:
@@ -71,7 +71,3 @@ def say(number):
             
 
     return output
-
-
-def division(dividend, divisor):
-    return (dividend // divisor, dividend % divisor)
