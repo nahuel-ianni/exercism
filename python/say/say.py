@@ -33,6 +33,7 @@ class Prefix(Enum):
 
 @unique
 class Suffix(Enum):
+    teen = 0
     hundred = 1
     thousand = 2
     million = 3
@@ -70,7 +71,7 @@ def xxx(number):
 
     elif number < 20:
         r = number % 10
-        output = f"{Number(r).name}teen"
+        output = f"{Number(r).name}{Suffix(0).name}"
 
     else:
         q, r = divmod(number, 10)
