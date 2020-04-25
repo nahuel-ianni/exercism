@@ -52,10 +52,10 @@ def say(number):
 
     while digits:
         length = len(digits)
-        
-        output.append(parse(int(digits[0])))
+        num_bl = int(digits[0])
+        output.append(parse(num_bl))
 
-        if length > 1 and int(digits[0]):
+        if length > 1 and num_bl:
             output.append(Suffix(length).name)
 
         digits = digits[1:]
