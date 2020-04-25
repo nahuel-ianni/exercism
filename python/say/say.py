@@ -66,17 +66,11 @@ def say(number):
             digits = f"{number:,}".split(",")
             output = f"{say(int(digits[0]))} {Suffix(l).name} {say(int(''.join(n for n in digits[1:])))}"
 
-            # output = ""
-            # digits = f"{number:,}".split(",")
-
-            # for n in digits:
-            #     output += f"{say(int(n))} {Suffix(l).name} "
-
         else:
             output = f"{Numbers(q).name} {Suffix(l).name}"
             
 
-    return output.rstrip()
+    return output
 
 
 def division(dividend, divisor):
