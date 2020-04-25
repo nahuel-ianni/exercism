@@ -2,7 +2,7 @@ from enum import Enum, unique
 
 
 @unique
-class Numbers(Enum):
+class Number(Enum):
     zero = 0
     one = 1
     two = 2
@@ -33,41 +33,44 @@ class Prefix(Enum):
 
 @unique
 class Suffix(Enum):
-    hundred  = 0
-    thousand = 1
-    million  = 2
-    billion  = 3
+    hundred = 1
+    thousand = 2
+    million = 3
+    billion = 4
 
 
 def say(number):
     if number < 0 or number > 999999999999:
         raise ValueError("Value out of range")
 
-    elif number < 14:
-        output = Numbers(number).name
+    output = ""
+    digits = [n for n in f"{number:,}".split(",")]
+    length = len(digits)
+    q, r = divmod(int(digits[0]), 100)
+
+    if q:
+        output += f"{xxx(q)} {Suffix(1).name} "
+
+    if r:
+        output += f"{xxx(r)}"
+
+    if length > 1:
+        number = int("".join(n for n in digits[1:]))
+        output += f" {Suffix(length).name} {say(number)}"
+
+    return output.rstrip()
+
+
+def xxx(number):
+    if number < 14:
+        output = Number(number).name
 
     elif number < 20:
         r = number % 10
-        output = f"{Numbers(r).name}teen"
-
-    elif number < 100:
-        q, r = divmod(number, 10)
-        output = f"{Prefix(q).name}-{Numbers(r).name}" if r else Prefix(q).name
-
-    elif number < 1000:
-        q, r = divmod(number, 100)
-        output = f"{Numbers(q).name} hundred {say(r)}" if r else f"{Numbers(q).name} hundred"
+        output = f"{Number(r).name}teen"
 
     else:
-        q, r = divmod(number, 1000)
-        l = len(str(number)) % 3
-
-        if r:
-            digits = f"{number:,}".split(",")
-            output = f"{say(int(digits[0]))} {Suffix(l).name} {say(int(''.join(n for n in digits[1:])))}"
-
-        else:
-            output = f"{Numbers(q).name} {Suffix(l).name}"
-            
+        q, r = divmod(number, 10)
+        output = f"{Prefix(q).name}-{Number(r).name}" if r else Prefix(q).name
 
     return output
