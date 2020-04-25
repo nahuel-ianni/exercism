@@ -43,6 +43,9 @@ def say(number):
     if number < 0 or number > 999999999999:
         raise ValueError("Value out of range")
 
+    elif not number:
+        return Number(number).name
+
     output = ""
     digits = [n for n in f"{number:,}".split(",")]
     length = len(digits)
@@ -58,7 +61,7 @@ def say(number):
         number = int("".join(n for n in digits[1:]))
         output += f" {Suffix(length).name} {say(number)}"
 
-    return output.rstrip()
+    return output.rstrip().replace(f" {Number(0).name}", "")
 
 
 def xxx(number):
