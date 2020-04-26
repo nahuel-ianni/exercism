@@ -2,7 +2,7 @@ using System;
 
 public class Clock
 {
-    private int hours, minutes = 0;
+    private readonly int hours, minutes;
 
     public Clock(int hours, int minutes)
     {
@@ -12,17 +12,14 @@ public class Clock
         this.minutes = time.Minutes;
     }
 
-    public Clock Add(int minutesToAdd)
-    {
-        return new Clock(hours, minutes + minutesToAdd);
-    }
+    public Clock Add(int minutesToAdd) =>
+        new Clock(hours, minutes + minutesToAdd);
 
-    public Clock Subtract(int minutesToSub)
-    {
-        return new Clock(hours, minutes - Math.Abs(minutesToSub));
-    }
+    public Clock Subtract(int minutesToSub) =>
+        new Clock(hours, minutes - Math.Abs(minutesToSub));
 
     public override bool Equals(object obj) =>
+        this.GetType() == obj.GetType() && 
         this.ToString() == obj.ToString();
     
     public override int GetHashCode() =>
