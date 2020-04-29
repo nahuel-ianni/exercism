@@ -1,15 +1,17 @@
 const earthSeconds = 31557600;
 
 const PlanetarySeconds = {
-  earth   : earthSeconds,
-  mercury : 0.2408467  * earthSeconds,
-  venus   : 0.61519726 * earthSeconds,
-  mars    : 1.8808158  * earthSeconds,
-  jupiter : 11.862615  * earthSeconds,
-  saturn  : 29.447498  * earthSeconds,
-  uranus  : 84.016846  * earthSeconds,
-  neptune : 164.79132  * earthSeconds
+  earth   : 1,
+  mercury : 0.2408467,
+  venus   : 0.61519726,
+  mars    : 1.8808158,
+  jupiter : 11.862615,
+  saturn  : 29.447498,
+  uranus  : 84.016846,
+  neptune : 164.79132 
 }
 
 export const age = (planet, seconds) => 
-  Number((seconds / PlanetarySeconds[planet]).toFixed(2));
+  Number(
+    (seconds / (PlanetarySeconds[planet] * earthSeconds))
+    .toFixed(2));
