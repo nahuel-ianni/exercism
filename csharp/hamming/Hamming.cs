@@ -8,6 +8,6 @@ public static class Hamming
         if (firstStrand.Length != secondStrand.Length)
             throw new ArgumentException("Strands are of different length.");
 
-        return firstStrand.Zip(secondStrand, (c1, c2) => (c1 != c2)).Count(x => x);
+        return firstStrand.Zip(secondStrand).Count(x => x.First != x.Second);
     }
 }
