@@ -1,8 +1,13 @@
-//
-// This is only a SKELETON file for the 'Roman Numerals' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+const conversion = {
+  1    : "I",
+  5    : "V",
+  10   : "X",
+  50   : "L",
+  100  : "C",
+  500  : "D",
+  1000 : "M",
+}
 
-export const toRoman = () => {
-  throw new Error("Remove this statement and implement this function");
+export const toRoman = (num) => {
+  return conversion[num];
 };
