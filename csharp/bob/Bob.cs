@@ -5,26 +5,30 @@ public static class Bob
     public static string Response(string statement)
     {
         statement = statement.Trim();
-        var isUpper = IsUpper(statement);
+        var isYelling = IsYelling(statement);
         var output = "Whatever.";
 
-        if (string.IsNullOrEmpty(statement))
+        if (IsSilent(statement))
             output = "Fine. Be that way!";
 
-        else if (statement.EndsWith("?"))
-            output = isUpper
+        else if (IsQuestion(statement))
+            output = isYelling
                 ? "Calm down, I know what I'm doing!"
                 : "Sure.";
 
-        else if (isUpper)
+        else if (isYelling)
             output = "Whoa, chill out!";
 
         return output;
     }
 
-    private static bool IsUpper(string s)
-    {
-        return s.Any(c => char.IsLetter(c)) &&
-               s.Where(c => char.IsLetter(c)).All(c => char.IsUpper(c));
-    }
+    private static bool IsQuestion(string s) =>
+        s.EndsWith("?");
+
+    private static bool IsSilent(string s) =>
+        string.IsNullOrEmpty(s);
+
+    private static bool IsYelling(string s) =>
+        s.Any(c => char.IsLetter(c)) &&
+        s.Where(c => char.IsLetter(c)).All(c => char.IsUpper(c));
 }
