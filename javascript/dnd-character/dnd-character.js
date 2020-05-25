@@ -15,6 +15,7 @@ export class Character {
     this._intelligence = Character.rollAbility();
     this._wisdom = Character.rollAbility();
     this._charisma = Character.rollAbility();
+    
     this._hitpoints = abilityModifier(this._constitution) + 10;
   }
 
@@ -24,31 +25,17 @@ export class Character {
       Math.floor(Math.random() * 6);
   }
 
-  get strength() {
-    return this._strength;
-  }
+  get strength() { return this._strength; }
 
-  get dexterity() {
-    return this._dexterity;
-  }
+  get dexterity() { return this._dexterity; }
 
-  get constitution() {
-    return this._constitution;
-  }
+  get constitution() { return this._constitution; }
 
-  get intelligence() {
-    return this._intelligence;
-  }
+  get intelligence() { return this._intelligence; }
 
-  get wisdom() {
-    return this._wisdom;
-  }
+  get wisdom() { return this._wisdom; }
 
-  get charisma() {
-    return this._charisma;
-  }
+  get charisma() { return this._charisma; }
 
-  get hitpoints() {
-    return this._hitpoints;
-  }
+  get hitpoints() { return this._hitpoints; }
 }
