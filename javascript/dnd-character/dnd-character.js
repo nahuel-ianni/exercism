@@ -1,42 +1,54 @@
-//
-// This is only a SKELETON file for the 'D&D Character' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+import { runInThisContext } from "vm";
 
-export const abilityModifier = () => {
-  throw new Error("Remove this statement and implement this function");
+export const abilityModifier = (value) => {
+  if (value < 3) throw 'Ability scores must be at least 3';
+  if (value > 18) throw 'Ability scores can be at most 18';
+
+  return Math.floor((value - 10) / 2);
 };
 
 export class Character {
+  constructor() {
+    this._strength = Character.rollAbility();
+    this._dexterity = Character.rollAbility();
+    this._constitution = Character.rollAbility();
+    this._intelligence = Character.rollAbility();
+    this._wisdom = Character.rollAbility();
+    this._charisma = Character.rollAbility();
+    this._hitpoints = abilityModifier(this._constitution) + 10;
+  }
+
   static rollAbility() {
-    throw new Error("Remove this statement and implement this function");
+    return Math.floor(Math.random() * 6) +
+      Math.floor(Math.random() * 6) +
+      Math.floor(Math.random() * 6);
   }
 
   get strength() {
-    throw new Error("Remove this statement and implement this function");
+    return this._strength;
   }
 
   get dexterity() {
-    throw new Error("Remove this statement and implement this function");
+    return this._dexterity;
   }
 
   get constitution() {
-    throw new Error("Remove this statement and implement this function");
+    return this._constitution;
   }
 
   get intelligence() {
-    throw new Error("Remove this statement and implement this function");
+    return this._intelligence;
   }
 
   get wisdom() {
-    throw new Error("Remove this statement and implement this function");
+    return this._wisdom;
   }
 
   get charisma() {
-    throw new Error("Remove this statement and implement this function");
+    return this._charisma;
   }
 
   get hitpoints() {
-    throw new Error("Remove this statement and implement this function");
+    return this._hitpoints;
   }
 }
