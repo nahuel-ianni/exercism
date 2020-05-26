@@ -9,8 +9,7 @@ public static class MatchingBrackets
         var curatedInput = input
             .Where(c => c.Equals('(') || c.Equals(')') ||
                         c.Equals('[') || c.Equals(']') ||
-                        c.Equals('{') || c.Equals('}'))
-            .ToArray();
+                        c.Equals('{') || c.Equals('}'));
 
         var brackets = string.Concat(curatedInput);
 
