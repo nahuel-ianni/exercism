@@ -1,24 +1,16 @@
 export class Squares {
   constructor(upperBound) {
-    this.upperBound = upperBound + 1;
+    this.numbers = [...Array(upperBound + 1).keys()];
   }
 
   get sumOfSquares() {
-    let sum = 0;
-
-    for (let i = 0; i < this.upperBound; i++)
-      sum += Math.pow(i, 2);
-
-    return sum;
+    return this.numbers
+      .map(x => Math.pow(x, 2))
+      .reduce((x, y) => x + y, 0);
   }
 
   get squareOfSum() {
-    let sum = 0;
-
-    for (let i = 0; i < this.upperBound; i++)
-      sum += i;
-
-    return Math.pow(sum, 2);
+    return Math.pow(this.numbers.reduce((x, y) => x + y, 0), 2);
   }
 
   get difference() {
