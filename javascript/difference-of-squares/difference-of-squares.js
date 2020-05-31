@@ -22,10 +22,6 @@ export class Squares {
   }
 
   get difference() {
-    return this.squareOfSum- this.sumOfSquares;
-  }
-
-  get numbers() {
-    return new Array().fill();
+    return this.squareOfSum - this.sumOfSquares;
   }
 }
