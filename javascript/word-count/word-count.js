@@ -1,8 +1,12 @@
-//
-// This is only a SKELETON file for the 'Word Count' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const countWords = (phrase) => {
+  const words = Object.create(null);
+  phrase = phrase.match(/\w+/g);
 
-export const countWords = () => {
-  throw new Error("Remove this statement and implement this function");
+  phrase.forEach(word => {
+    if (words[word]) words[word] += 1;
+    else words[word] = 1;
+  });
+
+  console.log(words);
+  return words;
 };
