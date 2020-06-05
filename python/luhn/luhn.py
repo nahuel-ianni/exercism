@@ -6,7 +6,7 @@ class Luhn:
         if not (self.card.isdigit() and len(self.card) > 1):
             return False
 
-        digits = [int(x) for x in self.card if x.isdigit()][::-1]
+        digits = [int(x) for x in self.card][::-1]
 
         for i in range(1, len(digits), 2):
             num = digits[i] * 2
