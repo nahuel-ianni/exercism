@@ -1,12 +1,13 @@
 class Clock:
     def __init__(self, hour, minute):
-        pass
+        self.hours = hour
+        self.minutes = minute
 
     def __repr__(self):
-        pass
+        return f"{self.hours:02d}:{self.minutes:02d}"
 
     def __eq__(self, other):
-        pass
+        return self.hours == other.hours and self.minutes == other.minutes
 
     def __add__(self, minutes):
         pass
