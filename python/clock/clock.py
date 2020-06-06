@@ -7,7 +7,7 @@ class Clock:
         return f"{self.hours:02d}:{self.minutes:02d}"
 
     def __eq__(self, other):
-        return self.hours == other.hours and self.minutes == other.minutes
+        return str(self) == str(other)
 
     def __add__(self, minutes):
         pass
