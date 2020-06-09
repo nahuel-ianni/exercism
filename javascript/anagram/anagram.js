@@ -3,8 +3,7 @@ export const findAnagrams = (word, candidates) => {
   const chars = [...word].sort().join();
 
   return candidates
-    .filter(x => 
-      x.length === word.length &&
+    .filter(x =>
       x.toLowerCase() !== word &&
       chars === [...x.toLowerCase()].sort().join()
     );
