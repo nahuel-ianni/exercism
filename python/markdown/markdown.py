@@ -4,7 +4,7 @@ import re
 _headerMdSymbol = '#'
 
 def parse(markdown):
-    res = ''
+    html = ''
     in_list = False
     in_list_append = False
 
@@ -25,8 +25,8 @@ def parse(markdown):
                 in_list_append = True
                 in_list = False
 
-        line = _handleParagraphs(line)
 
+        line = _handleParagraphs(line)
         line = _handleTextLabeling(line, '__', 'strong')
         line = _handleTextLabeling(line, '_', 'em')
 
@@ -34,12 +34,12 @@ def parse(markdown):
             line = '</ul>' + line
             in_list_append = False
 
-        res += line
+        html += line
 
     if in_list:
-        res += '</ul>'
+        html += '</ul>'
 
-    return res
+    return html
 
 
 def _handleHeaders(markdown):
@@ -62,3 +62,4 @@ def _handleParagraphs(markdown):
 def _handleTextLabeling(markdown, mdLabel, htmlLabel):
     m = re.match(f'(.*){mdLabel}(.*){mdLabel}(.*)', markdown)
     return f'{m.group(1)}<{htmlLabel}>{m.group(2)}</{htmlLabel}>{m.group(3)}' if m else markdown
+    # return markdown.replace(mdLabel, htmlLabel)
