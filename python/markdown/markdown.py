@@ -50,9 +50,7 @@ def parse(markdown):
                 in_list_append = True
                 in_list = False
 
-        m = re.match('<h|<ul|<p|<li', i)
-        if not m:
-            i = '<p>' + i + '</p>'
+        i = _handleParagraphs(i)
 
         m = re.match('(.*)__(.*)__(.*)', i)
         if m:
@@ -61,9 +59,11 @@ def parse(markdown):
         m = re.match('(.*)_(.*)_(.*)', i)
         if m:
             i = m.group(1) + '<em>' + m.group(2) + '</em>' + m.group(3)
+
         if in_list_append:
             i = '</ul>' + i
             in_list_append = False
+
         res += i
 
     if in_list:
@@ -83,3 +83,7 @@ def _handleHeaders(markdown):
             break
 
     return markdown
+
+
+def _handleParagraphs(markdown):
+    return markdown if re.match('<h|<ul|<p|<li', markdown) else f'<p>{markdown}</p>'
