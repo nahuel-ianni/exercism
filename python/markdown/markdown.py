@@ -1,7 +1,11 @@
 import re
 
 
-_headerSymbol = '#'
+_emphasisMdSymbol = '_'
+_emphasisHtmlTag = 'em'
+_headerMdSymbol = '#'
+_strongMdSymbol = '__'
+_strongHtmlTag = 'strong'
 
 def parse(markdown):
     lines = markdown.split('\n')
@@ -10,7 +14,7 @@ def parse(markdown):
     in_list_append = False
 
     for i in lines:
-        if i.startswith(_headerSymbol):
+        if i.startswith(_headerMdSymbol):
             i = _handleHeaders(i)
 
         m = re.match(r'\* (.*)', i)
@@ -42,25 +46,17 @@ def parse(markdown):
     return res
 
 def TEMPMETHOD(markdown):
-    curr = markdown
-
-    m1 = re.match('(.*)__(.*)__(.*)', curr)
-    if m1:
-        curr = m1.group(1) + '<strong>' + m1.group(2) + '</strong>' + m1.group(3)
-
-    m1 = re.match('(.*)_(.*)_(.*)', curr)
-    if m1:
-        curr = m1.group(1) + '<em>' + m1.group(2) + '</em>' + m1.group(3)
+    markdown = _handleTextLabeling(markdown, _strongMdSymbol, _strongHtmlTag)
+    markdown = _handleTextLabeling(markdown, _emphasisMdSymbol, _emphasisHtmlTag)
     
-    return curr
-
+    return markdown
 
 
 def _handleHeaders(markdown):
     exp_format = ' (.*)'
 
     for x in range(1, 7):
-        regex = exp_format.rjust(x + len(exp_format), _headerSymbol)
+        regex = exp_format.rjust(x + len(exp_format), _headerMdSymbol)
 
         if re.match(regex, markdown):
             markdown = f'<h{x}>{markdown[x + 1:]}</h{x}>'
@@ -71,3 +67,8 @@ def _handleHeaders(markdown):
 
 def _handleParagraphs(markdown):
     return markdown if re.match('<h|<ul|<p|<li', markdown) else f'<p>{markdown}</p>'
+
+
+def _handleTextLabeling(markdown, mdLabel, htmlLabel):
+    m = re.match(f'(.*){mdLabel}(.*){mdLabel}(.*)', markdown)
+    return f'{m.group(1)}<{htmlLabel}>{m.group(2)}</{htmlLabel}>{m.group(3)}' if m else markdown
