@@ -4,21 +4,20 @@ import re
 _headerMdSymbol = '#'
 
 def parse(markdown):
-    lines = markdown.split('\n')
     res = ''
     in_list = False
     in_list_append = False
 
-    for i in lines:
-        if i.startswith(_headerMdSymbol):
-            i = _handleHeaders(i)
+    for line in markdown.split('\n'):
+        if line.startswith(_headerMdSymbol):
+            line = _handleHeaders(line)
 
-        m = re.match(r'\* (.*)', i)
+        m = re.match(r'\* (.*)', line)
         if m:
-            i = f'<li>{m.group(1)}</li>'
+            line = f'<li>{m.group(1)}</li>'
 
             if not in_list:
-                i = f'<ul>{i}'
+                line = f'<ul>{line}'
                 in_list = True
 
         else:
@@ -26,16 +25,16 @@ def parse(markdown):
                 in_list_append = True
                 in_list = False
 
-        i = _handleParagraphs(i)
+        line = _handleParagraphs(line)
 
-        i = _handleTextLabeling(i, '__', 'strong')
-        i = _handleTextLabeling(i, '_', 'em')
+        line = _handleTextLabeling(line, '__', 'strong')
+        line = _handleTextLabeling(line, '_', 'em')
 
         if in_list_append:
-            i = '</ul>' + i
+            line = '</ul>' + line
             in_list_append = False
 
-        res += i
+        res += line
 
     if in_list:
         res += '</ul>'
