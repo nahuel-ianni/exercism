@@ -15,33 +15,11 @@ def parse(markdown):
 
         m = re.match(r'\* (.*)', i)
         if m:
-            if in_list:
-                curr = m.group(1)
+            i = f'<li>{TEMPMETHOD(m.group(1))}</li>'
 
-                m1 = re.match('(.*)__(.*)__(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<strong>' + m1.group(2) + '</strong>' + m1.group(3)
-
-                m1 = re.match('(.*)_(.*)_(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<em>' + m1.group(2) + '</em>' + m1.group(3)
-
-                i = '<li>' + curr + '</li>'
-
-
-            else:
+            if not in_list:
+                i = f'<ul>{i}'
                 in_list = True
-                curr = m.group(1)
-
-                m1 = re.match('(.*)__(.*)__(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<strong>' + m1.group(2) + '</strong>' + m1.group(3)
-
-                m1 = re.match('(.*)_(.*)_(.*)', curr)
-                if m1:
-                    curr = m1.group(1) + '<em>' + m1.group(2) + '</em>' + m1.group(3)
-                
-                i = '<ul><li>' + curr + '</li>'
 
         else:
             if in_list:
@@ -68,6 +46,20 @@ def parse(markdown):
         res += '</ul>'
 
     return res
+
+def TEMPMETHOD(markdown):
+    curr = markdown
+
+    m1 = re.match('(.*)__(.*)__(.*)', curr)
+    if m1:
+        curr = m1.group(1) + '<strong>' + m1.group(2) + '</strong>' + m1.group(3)
+
+    m1 = re.match('(.*)_(.*)_(.*)', curr)
+    if m1:
+        curr = m1.group(1) + '<em>' + m1.group(2) + '</em>' + m1.group(3)
+    
+    return curr
+
 
 
 def _handleHeaders(markdown):
