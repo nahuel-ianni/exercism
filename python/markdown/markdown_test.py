@@ -34,9 +34,7 @@ class MarkdownTest(unittest.TestCase):
         self.assertEqual(parse("## This will be an h2"), "<h2>This will be an h2</h2>")
 
     def test_with_h6_header_level(self):
-        self.assertEqual(
-            parse("###### This will be an h6"), "<h6>This will be an h6</h6>"
-        )
+        self.assertEqual(parse("###### This will be an h6"), "<h6>This will be an h6</h6>")
 
     def test_unordered_lists(self):
         self.assertEqual(
