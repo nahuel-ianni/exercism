@@ -43,10 +43,10 @@ def parse(markdown):
 
 
 def _handleHeaders(markdown):
-    exp_format = ' (.*)'
+    expression = ' (.*)'
 
     for x in range(1, 7):
-        regex = exp_format.rjust(x + len(exp_format), _headerMdSymbol)
+        regex = expression.rjust(x + len(expression), _headerMdSymbol)
 
         if re.match(regex, markdown):
             markdown = f'<h{x}>{markdown[x + 1:]}</h{x}>'
