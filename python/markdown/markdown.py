@@ -1,11 +1,7 @@
 import re
 
 
-_emphasisMdSymbol = '_'
-_emphasisHtmlTag = 'em'
 _headerMdSymbol = '#'
-_strongMdSymbol = '__'
-_strongHtmlTag = 'strong'
 
 def parse(markdown):
     lines = markdown.split('\n')
@@ -19,7 +15,9 @@ def parse(markdown):
 
         m = re.match(r'\* (.*)', i)
         if m:
-            i = f'<li>{TEMPMETHOD(m.group(1))}</li>'
+            i = _handleTextLabeling(m.group(1), '__', 'strong')
+            i = _handleTextLabeling(i, '_', 'em')
+            i = f'<li>{i}</li>'
 
             if not in_list:
                 i = f'<ul>{i}'
@@ -32,7 +30,8 @@ def parse(markdown):
 
         i = _handleParagraphs(i)
 
-        i = TEMPMETHOD(i)
+        i = _handleTextLabeling(i, '__', 'strong')
+        i = _handleTextLabeling(i, '_', 'em')
 
         if in_list_append:
             i = '</ul>' + i
@@ -44,12 +43,6 @@ def parse(markdown):
         res += '</ul>'
 
     return res
-
-def TEMPMETHOD(markdown):
-    markdown = _handleTextLabeling(markdown, _strongMdSymbol, _strongHtmlTag)
-    markdown = _handleTextLabeling(markdown, _emphasisMdSymbol, _emphasisHtmlTag)
-    
-    return markdown
 
 
 def _handleHeaders(markdown):
