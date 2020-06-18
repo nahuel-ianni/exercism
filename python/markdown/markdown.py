@@ -15,9 +15,7 @@ def parse(markdown):
 
         m = re.match(r'\* (.*)', i)
         if m:
-            i = _handleTextLabeling(m.group(1), '__', 'strong')
-            i = _handleTextLabeling(i, '_', 'em')
-            i = f'<li>{i}</li>'
+            i = f'<li>{m.group(1)}</li>'
 
             if not in_list:
                 i = f'<ul>{i}'
