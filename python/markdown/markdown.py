@@ -1,6 +1,8 @@
 import re
 
 
+_headerSymbol = '#'
+
 def parse(markdown):
     lines = markdown.split('\n')
     res = ''
@@ -8,25 +10,22 @@ def parse(markdown):
     in_list_append = False
 
     for i in lines:
-        i = _handleHeaders(i)
+        if i.startswith(_headerSymbol):
+            i = _handleHeaders(i)
 
         m = re.match(r'\* (.*)', i)
         if m:
             if not in_list:
                 in_list = True
-                is_bold = False
-                is_italic = False
                 curr = m.group(1)
 
                 m1 = re.match('(.*)__(.*)__(.*)', curr)
                 if m1:
                     curr = m1.group(1) + '<strong>' + m1.group(2) + '</strong>' + m1.group(3)
-                    is_bold = True
 
                 m1 = re.match('(.*)_(.*)_(.*)', curr)
                 if m1:
                     curr = m1.group(1) + '<em>' + m1.group(2) + '</em>' + m1.group(3)
-                    is_italic = True
                 
                 i = '<ul><li>' + curr + '</li>'
 
@@ -82,7 +81,7 @@ def _handleHeaders(markdown):
     exp_format = ' (.*)'
 
     for x in range(1, 7):
-        regex = exp_format.rjust(x + len(exp_format), '#')
+        regex = exp_format.rjust(x + len(exp_format), _headerSymbol)
 
         if re.match(regex, markdown):
             markdown = f'<h{x}>{markdown[x + 1:]}</h{x}>'
