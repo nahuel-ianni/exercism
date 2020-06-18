@@ -73,11 +73,13 @@ def parse(markdown):
 
 
 def _handleHeaders(markdown):
-    if re.match('###### (.*)', markdown) is not None:
-        markdown = '<h6>' + markdown[7:] + '</h6>'
-    elif re.match('## (.*)', markdown) is not None:
-        markdown = '<h2>' + markdown[3:] + '</h2>'
-    elif re.match('# (.*)', markdown) is not None:
-        markdown = '<h1>' + markdown[2:] + '</h1>'
+    exp_format = ' (.*)'
+
+    for x in range(1, 7):
+        regex = exp_format.rjust(x + len(exp_format), '#')
+
+        if re.match(regex, markdown):
+            markdown = f'<h{x}>{markdown[x + 1:]}</h{x}>'
+            break
 
     return markdown
