@@ -6,13 +6,10 @@ def parse(markdown):
     res = ''
     in_list = False
     in_list_append = False
+
     for i in lines:
-        if re.match('###### (.*)', i) is not None:
-            i = '<h6>' + i[7:] + '</h6>'
-        elif re.match('## (.*)', i) is not None:
-            i = '<h2>' + i[3:] + '</h2>'
-        elif re.match('# (.*)', i) is not None:
-            i = '<h1>' + i[2:] + '</h1>'
+        i = _handleHeaders(i)
+
         m = re.match(r'\* (.*)', i)
         if m:
             if not in_list:
@@ -56,9 +53,11 @@ def parse(markdown):
         m = re.match('<h|<ul|<p|<li', i)
         if not m:
             i = '<p>' + i + '</p>'
+
         m = re.match('(.*)__(.*)__(.*)', i)
         if m:
             i = m.group(1) + '<strong>' + m.group(2) + '</strong>' + m.group(3)
+
         m = re.match('(.*)_(.*)_(.*)', i)
         if m:
             i = m.group(1) + '<em>' + m.group(2) + '</em>' + m.group(3)
@@ -66,6 +65,19 @@ def parse(markdown):
             i = '</ul>' + i
             in_list_append = False
         res += i
+
     if in_list:
         res += '</ul>'
+
     return res
+
+
+def _handleHeaders(markdown):
+    if re.match('###### (.*)', markdown) is not None:
+        markdown = '<h6>' + markdown[7:] + '</h6>'
+    elif re.match('## (.*)', markdown) is not None:
+        markdown = '<h2>' + markdown[3:] + '</h2>'
+    elif re.match('# (.*)', markdown) is not None:
+        markdown = '<h1>' + markdown[2:] + '</h1>'
+
+    return markdown
