@@ -1,18 +1,20 @@
-//
-// This is only a SKELETON file for the 'Series' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export class Series {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(values) {
+    this.values = [...values].map(x => Number(x));
   }
 
-  get digits() {
-    throw new Error("Remove this statement and implement this function");
-  }
+  get digits() { return this.values; }
 
-  slices() {
-    throw new Error("Remove this statement and implement this function");
+  slices(length) {
+    if (this.values.length < length)
+      throw new Error("Slice size is too big.");
+
+    const output = [];
+    const limit = this.values.length - length;
+
+    for (let index = 0; index <= limit; index++)
+      output.push(this.values.slice(index, index + length));
+
+    return output;
   }
 }
