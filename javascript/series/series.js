@@ -1,6 +1,6 @@
 export class Series {
   constructor(values) {
-    this.values = [...values].map(x => Number(x));
+    this.values = [...values].map(Number);
   }
 
   get digits() { return this.values; }
