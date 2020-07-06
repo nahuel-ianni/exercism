@@ -1,8 +1,13 @@
-//
-// This is only a SKELETON file for the 'Isogram' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const isIsogram = (phrase) => {
+  const characters = [...sanitizePhrase(phrase)];
+  const set = new Set(characters);
 
-export const isIsogram = () => {
-  throw new Error("Remove this statement and implement this function");
+  return characters.length === set.size;
 };
+
+const sanitizePhrase = (phrase) => {
+  return phrase
+    .toLowerCase()
+    .replace(' ', '')
+    .replace('-', '');
+}
