@@ -1,65 +1,34 @@
 import re
 
 
-_headerMdSymbol = '#'
-
 def parse(markdown):
-    html = ''
-    in_list = False
-    in_list_append = False
+    rules = {
+        'h1': r'^\s*# (.*)$',
+        'h2': r'^\s*## (.*)$',
+        'h3': r'^\s*### (.*)$',
+        'h4': r'^\s*#### (.*)$',
+        'h5': r'^\s*##### (.*)$',
+        'h6': r'^\s*###### (.*)$',
+        'li': r'^\* (.*)',
+        'ul': r'(<li>.*?</li>)(?![\n]*<li>)',
+        'p': r'^([^<\n].*)',
+        'strong': r'__(.*)__',
+        'em': r'_(.*)_'
+    }
 
-    for line in markdown.split('\n'):
-        if line.startswith(_headerMdSymbol):
-            line = _handleHeaders(line)
+    special_flags = {
+        'ul': re.DOTALL
+    }
 
-        m = re.match(r'\* (.*)', line)
-        if m:
-            line = f'<li>{m.group(1)}</li>'
+    for tag, pattern in rules.items():
+        markdown = re.sub(
+            pattern, 
+            tag_content(r'\1', tag),
+            markdown, 
+            flags=re.MULTILINE | special_flags.get(tag, 0))
 
-            if not in_list:
-                line = f'<ul>{line}'
-                in_list = True
-
-        else:
-            if in_list:
-                in_list_append = True
-                in_list = False
-
-
-        line = _handleParagraphs(line)
-        line = _handleTextLabeling(line, '__', 'strong')
-        line = _handleTextLabeling(line, '_', 'em')
-
-        if in_list_append:
-            line = '</ul>' + line
-            in_list_append = False
-
-        html += line
-
-    if in_list:
-        html += '</ul>'
-
-    return html
+    return markdown.replace('\n', '')
 
 
-def _handleHeaders(markdown):
-    expression = ' (.*)'
-
-    for x in range(1, 7):
-        regex = expression.rjust(x + len(expression), _headerMdSymbol)
-
-        if re.match(regex, markdown):
-            markdown = f'<h{x}>{markdown[x + 1:]}</h{x}>'
-            break
-
-    return markdown
-
-
-def _handleParagraphs(markdown):
-    return markdown if re.match('<h|<ul|<p|<li', markdown) else f'<p>{markdown}</p>'
-
-
-def _handleTextLabeling(markdown, mdLabel, htmlLabel):
-    m = re.match(f'(.*){mdLabel}(.*){mdLabel}(.*)', markdown)
-    return f'{m.group(1)}<{htmlLabel}>{m.group(2)}</{htmlLabel}>{m.group(3)}' if m else markdown
-    # return markdown.replace(mdLabel, htmlLabel)
+def tag_content(content, html_tag):
+    return f'<{html_tag}>{content}</{html_tag}>'
