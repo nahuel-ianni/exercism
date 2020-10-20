@@ -1,8 +1,27 @@
-//
-// This is only a SKELETON file for the 'Bob' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export const hey = (message) => {
-  throw new Error("Remove this statement and implement this function");
+  const phrase = message.trim();
+  const phraseWasShouted = isYelling(phrase) && containsChar(message);
+  let response = "Whatever.";
+
+  if (isSilent(phrase))
+    response = "Fine. Be that way!";
+
+  else if (isQuestion(phrase))
+    response = phraseWasShouted
+      ? "Calm down, I know what I'm doing!"
+      : "Sure.";
+
+  else if (phraseWasShouted)
+    response = "Whoa, chill out!";
+
+  return response;
 };
+
+const containsChar = (message) =>
+  [...message.toLowerCase()].some(c => c.match(/[a-z]/i));
+
+const isQuestion = (message) => message.endsWith("?");
+
+const isSilent = (message) => !message;
+
+const isYelling = (message) => message === message.toUpperCase();
