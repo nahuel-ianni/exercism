@@ -1,25 +1,25 @@
 import re
 
 
+rules = {
+    'h1': r'^\s*# (.*)$',
+    'h2': r'^\s*## (.*)$',
+    'h3': r'^\s*### (.*)$',
+    'h4': r'^\s*#### (.*)$',
+    'h5': r'^\s*##### (.*)$',
+    'h6': r'^\s*###### (.*)$',
+    'li': r'^\* (.*)',
+    'ul': r'(<li>.*?</li>)(?![\n]*<li>)',
+    'p': r'^([^<\n].*)',
+    'strong': r'__(.*)__',
+    'em': r'_(.*)_'
+}
+
+special_flags = {
+    'ul': re.DOTALL
+}
+
 def parse(markdown):
-    rules = {
-        'h1': r'^\s*# (.*)$',
-        'h2': r'^\s*## (.*)$',
-        'h3': r'^\s*### (.*)$',
-        'h4': r'^\s*#### (.*)$',
-        'h5': r'^\s*##### (.*)$',
-        'h6': r'^\s*###### (.*)$',
-        'li': r'^\* (.*)',
-        'ul': r'(<li>.*?</li>)(?![\n]*<li>)',
-        'p': r'^([^<\n].*)',
-        'strong': r'__(.*)__',
-        'em': r'_(.*)_'
-    }
-
-    special_flags = {
-        'ul': re.DOTALL
-    }
-
     for tag, pattern in rules.items():
         markdown = re.sub(
             pattern, 
