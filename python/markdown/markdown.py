@@ -1,7 +1,7 @@
 import re
 
 
-rules = {
+RULES = {
     'h1': r'^\s*# (.*)$',
     'h2': r'^\s*## (.*)$',
     'h3': r'^\s*### (.*)$',
@@ -15,17 +15,17 @@ rules = {
     'em': r'_(.*)_'
 }
 
-special_flags = {
+SPECIAL_FLAGS = {
     'ul': re.DOTALL
 }
 
 def parse(markdown):
-    for tag, pattern in rules.items():
+    for tag, pattern in RULES.items():
         markdown = re.sub(
             pattern, 
             tag_content(r'\1', tag),
             markdown, 
-            flags=re.MULTILINE | special_flags.get(tag, 0))
+            flags=re.MULTILINE | SPECIAL_FLAGS.get(tag, 0))
 
     return markdown.replace('\n', '')
 
